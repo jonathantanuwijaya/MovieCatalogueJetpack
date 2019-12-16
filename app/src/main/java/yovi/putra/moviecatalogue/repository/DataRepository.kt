@@ -3,7 +3,8 @@ package yovi.putra.moviecatalogue.repository
 import android.content.Context
 import android.content.res.TypedArray
 import yovi.putra.moviecatalogue.R
-import yovi.putra.moviecatalogue.model.Movie
+import yovi.putra.moviecatalogue.data.Movie
+import yovi.putra.moviecatalogue.utils.NumberGenerator
 
 object DataRepository {
 
@@ -24,7 +25,7 @@ object DataRepository {
                     movieTitle[i],
                     movieDescription[i],
                     movieYear[i],
-                    "5"
+                    NumberGenerator.getRandomIntegerWithinRange(5, 10).toString()
                 )
             )
         }

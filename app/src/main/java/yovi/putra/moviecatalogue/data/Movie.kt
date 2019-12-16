@@ -1,4 +1,4 @@
-package yovi.putra.moviecatalogue.model
+package yovi.putra.moviecatalogue.data
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
