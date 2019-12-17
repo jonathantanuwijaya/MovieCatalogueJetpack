@@ -33,7 +33,7 @@ class MovieViewModelTest {
         val data = movieVM.getMovie()
         assertNotNull(data)
         assertNotEquals(emptyList<Movie>(), data)
-        assertEquals(14, data.size)
+        assertEquals(12, data.size)
     }
 
     @Test

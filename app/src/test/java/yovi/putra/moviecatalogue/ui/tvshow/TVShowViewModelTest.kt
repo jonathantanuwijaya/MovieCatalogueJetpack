@@ -46,7 +46,7 @@ class TVShowViewModelTest {
         val data = tvShowVM.getTvShow()
         assertNotNull(data)
         assertNotEquals(emptyList<Movie>(), data)
-        assertEquals(20, data.size)
+        assertEquals(14, data.size)
     }
 
     @Test

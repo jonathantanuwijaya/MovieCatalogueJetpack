@@ -129,26 +129,6 @@ object MovieRepository {
                 "    \"vote_average\": 0,\n" +
                 "    \"overview\": \"An aging con artist cannot believe his luck when he meets a wealthy widow and marks her as his next target.  But she hides a secret of her own.\",\n" +
                 "    \"release_date\": \"2019-11-15\"\n" +
-                "  },\n" +
-                "  {\n" +
-                "    \"poster_path\": \"/2wm20cbkH1L8nA54Gtwfgz2hTqo.jpg\",\n" +
-                "    \"id\": 504562,\n" +
-                "    \"original_language\": \"en\",\n" +
-                "    \"original_title\": \"Motherless Brooklyn\",\n" +
-                "    \"title\": \"Motherless Brooklyn\",\n" +
-                "    \"vote_average\": 7.1,\n" +
-                "    \"overview\": \"Lionel Essrog, a private detective living with Tourette syndrome, ventures to solve the murder of his mentor and best friend — a mystery that carries him from the gin-soaked jazz clubs of Harlem to the slums of Brooklyn to the gilded halls of New York's power brokers.\",\n" +
-                "    \"release_date\": \"2019-11-01\"\n" +
-                "  },\n" +
-                "  {\n" +
-                "    \"poster_path\": \"/6ApDtO7xaWAfPqfi2IARXIzj8QS.jpg\",\n" +
-                "    \"id\": 359724,\n" +
-                "    \"original_language\": \"en\",\n" +
-                "    \"original_title\": \"Ford v Ferrari\",\n" +
-                "    \"title\": \"Ford v Ferrari\",\n" +
-                "    \"vote_average\": 7.7,\n" +
-                "    \"overview\": \"American car designer Carroll Shelby and the British-born driver Ken Miles work together to battle corporate interference, the laws of physics, and their own personal demons to build a revolutionary race car for Ford Motor Company and take on the dominating race cars of Enzo Ferrari at the 24 Hours of Le Mans in France in 1966.\",\n" +
-                "    \"release_date\": \"2019-11-15\"\n" +
                 "  }\n" +
                 "]"
         val responseType = object : TypeToken<List<Movie>>() {}.type

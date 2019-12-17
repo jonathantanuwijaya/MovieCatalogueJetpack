@@ -53,14 +53,24 @@ dependencies {
 
     // Dependencies for local unit tests
     testImplementation "junit:junit:$junit_version"
-    testImplementation "androidx.arch.core:core-testing:$archLifecycleVersion"
+    testImplementation "androidx.arch.core:core-testing:$archlifecycle_version"
     testImplementation "androidx.test:core:$test_core_version"
-    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "org.mockito:mockito-core:$mockito_version"
 
     // Dependencies for Android unit tests
     androidTestImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressocore_version"
+    androidTestImplementation "org.mockito:mockito-android:$mockito_android_version"
+
+    // Android Testing Support Library's runner and rules
+    androidTestImplementation "androidx.test:core:$test_core_version"
+    androidTestImplementation "androidx.test:rules:$test_rules_version"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressocore_version"
+    androidTestImplementation "androidx.arch.core:core-testing:$archlifecycle_version"
+
+    // Dependencies for Idle Resource
+    implementation "androidx.test.espresso:espresso-idling-resource:$idle_resource_version"
 
     /* Network */
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -69,6 +79,8 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
 
     /* IMAGE LOADER */
-    implementation "com.github.bumptech.glide:glide:$glide_version"
+    implementation("com.github.bumptech.glide:glide:$glide_version") {
+        exclude group: "androidx"
+    }
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 }
