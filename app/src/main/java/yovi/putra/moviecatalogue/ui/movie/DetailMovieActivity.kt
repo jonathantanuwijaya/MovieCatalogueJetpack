@@ -8,14 +8,16 @@ import kotlinx.android.synthetic.main.activity_detail_movie.*
 import kotlinx.android.synthetic.main.app_bar.*
 import yovi.putra.moviecatalogue.R
 import yovi.putra.moviecatalogue.base.BaseToolbarActivity
+import yovi.putra.moviecatalogue.data.entity.Constant.IMAGE_URL
 import yovi.putra.moviecatalogue.data.entity.Movie
 
 class DetailMovieActivity : BaseToolbarActivity() {
-
     companion object {
+        private const val MOVIE_ID = "id"
+
         fun navigate(context: Context, id: Int) {
             val intent = Intent(context, DetailMovieActivity::class.java).apply {
-                putExtra("id", id)
+                putExtra(MOVIE_ID, id)
             }
             context.startActivity(intent)
         }
@@ -28,7 +30,7 @@ class DetailMovieActivity : BaseToolbarActivity() {
     override fun setButtonBack(): Boolean = true
 
     override fun setupData() {
-        val id = intent.getIntExtra("id", -1)
+        val id = intent.getIntExtra(MOVIE_ID, -1)
         val vm = ViewModelProviders.of(this).get(MovieViewModel::class.java)
         movie = vm.getMovieById(id)
     }
@@ -42,7 +44,7 @@ class DetailMovieActivity : BaseToolbarActivity() {
             tv_overview.text = overview
 
             Glide.with(this@DetailMovieActivity)
-                .load(poster_path)
+                .load(IMAGE_URL + poster_path)
                 .placeholder(R.drawable.ic_placeholder)
                 .into(img_poster)
         }

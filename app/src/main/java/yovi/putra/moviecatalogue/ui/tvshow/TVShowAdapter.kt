@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_movie.*
 import yovi.putra.moviecatalogue.R
+import yovi.putra.moviecatalogue.data.entity.Constant.IMAGE_URL
 import yovi.putra.moviecatalogue.data.entity.TVShow
 
 class TVShowAdapter(private val listener: (TVShow) -> Unit)
@@ -40,7 +41,7 @@ class TVShowAdapter(private val listener: (TVShow) -> Unit)
             containerView.setOnClickListener { listener(tvshow) }
 
             Glide.with(containerView.context)
-                .load(tvshow.poster_path)
+                .load(IMAGE_URL + tvshow.poster_path)
                 .placeholder(R.drawable.ic_placeholder)
                 .into(img_poster)
         }
