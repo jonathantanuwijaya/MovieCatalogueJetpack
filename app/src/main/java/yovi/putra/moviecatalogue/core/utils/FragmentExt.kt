@@ -1,4 +1,4 @@
-package yovi.putra.moviecatalogue.utils
+package yovi.putra.moviecatalogue.core.utils
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

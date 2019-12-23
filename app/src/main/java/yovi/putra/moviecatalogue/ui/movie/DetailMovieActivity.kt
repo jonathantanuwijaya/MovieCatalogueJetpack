@@ -3,12 +3,12 @@ package yovi.putra.moviecatalogue.ui.movie
 import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
-import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_detail_movie.*
 import kotlinx.android.synthetic.main.app_bar.*
 import yovi.putra.moviecatalogue.R
-import yovi.putra.moviecatalogue.base.BaseToolbarActivity
-import yovi.putra.moviecatalogue.data.entity.Constant.IMAGE_URL
+import yovi.putra.moviecatalogue.core.base.BaseToolbarActivity
+import yovi.putra.moviecatalogue.core.common.Constant.IMAGE_URL
+import yovi.putra.moviecatalogue.core.utils.load
 import yovi.putra.moviecatalogue.data.entity.Movie
 
 class DetailMovieActivity : BaseToolbarActivity() {
@@ -42,12 +42,7 @@ class DetailMovieActivity : BaseToolbarActivity() {
             tv_title.text = release_date
             tv_rating.text = vote_average
             tv_overview.text = overview
-
-            Glide.with(this@DetailMovieActivity)
-                .load(IMAGE_URL + poster_path)
-                .placeholder(R.drawable.ic_placeholder)
-                .into(img_poster)
+            img_poster.load(IMAGE_URL + poster_path)
         }
-
     }
 }

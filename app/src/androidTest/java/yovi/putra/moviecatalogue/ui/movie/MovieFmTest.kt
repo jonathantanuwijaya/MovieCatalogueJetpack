@@ -1,27 +1,23 @@
 package yovi.putra.moviecatalogue.ui.movie
 
 import androidx.recyclerview.widget.RecyclerView
-import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import org.junit.Before
 
-import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import yovi.putra.moviecatalogue.R
 import yovi.putra.moviecatalogue.ui.MainActivity
-import yovi.putra.moviecatalogue.utils.RecyclerViewItemCountAssertion
+import yovi.putra.moviecatalogue.core.utils.RecyclerViewItemCountAssertion
 
 @RunWith(AndroidJUnit4::class)
 class MovieFmTest {

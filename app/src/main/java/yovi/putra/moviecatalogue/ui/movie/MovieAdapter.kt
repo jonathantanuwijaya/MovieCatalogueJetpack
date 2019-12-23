@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_movie.*
 import yovi.putra.moviecatalogue.R
-import yovi.putra.moviecatalogue.data.entity.Constant.IMAGE_URL
+import yovi.putra.moviecatalogue.core.common.Constant.IMAGE_URL
+import yovi.putra.moviecatalogue.core.utils.load
 import yovi.putra.moviecatalogue.data.entity.Movie
 
 class MovieAdapter(private val listener: (Movie) -> Unit)
@@ -38,12 +38,8 @@ class MovieAdapter(private val listener: (Movie) -> Unit)
         fun binding(movie: Movie, listener: (Movie) -> Unit){
             tv_title.text = movie.title
             tv_rating.text = movie.vote_average
+            img_poster.load(IMAGE_URL + movie.poster_path)
             containerView.setOnClickListener { listener(movie) }
-
-            Glide.with(containerView.context)
-                .load(IMAGE_URL + movie.poster_path)
-                .placeholder(R.drawable.ic_placeholder)
-                .into(img_poster)
         }
     }
 }

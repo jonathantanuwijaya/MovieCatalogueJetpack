@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.fragment_movie.*
 import yovi.putra.moviecatalogue.R
-import yovi.putra.moviecatalogue.base.BaseFragment
+import yovi.putra.moviecatalogue.core.base.BaseFragment
 
 class MovieFm : BaseFragment() {
 

@@ -4,10 +4,10 @@ import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import yovi.putra.moviecatalogue.R
-import yovi.putra.moviecatalogue.base.BaseActivity
+import yovi.putra.moviecatalogue.core.base.BaseActivity
 import yovi.putra.moviecatalogue.ui.movie.MovieFm
 import yovi.putra.moviecatalogue.ui.tvshow.TVShowFm
-import yovi.putra.moviecatalogue.utils.fragmentReplace
+import yovi.putra.moviecatalogue.core.utils.fragmentReplace
 
 class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
     private lateinit var movieFm : MovieFm

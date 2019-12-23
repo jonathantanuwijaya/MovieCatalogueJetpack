@@ -1,9 +1,8 @@
-package yovi.putra.moviecatalogue.base
+package yovi.putra.moviecatalogue.core.base
 
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import yovi.putra.moviecatalogue.base.IBaseView
 
 /**
  * Created by yovi.putra

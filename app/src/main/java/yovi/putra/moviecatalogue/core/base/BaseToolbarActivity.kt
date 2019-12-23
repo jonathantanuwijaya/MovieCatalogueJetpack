@@ -1,4 +1,4 @@
-package yovi.putra.moviecatalogue.base
+package yovi.putra.moviecatalogue.core.base
 
 import androidx.appcompat.widget.Toolbar
 
