@@ -10,6 +10,8 @@ import yovi.putra.moviecatalogue.data.repository.MovieRepository
 import yovi.putra.moviecatalogue.data.repository.TVShowRepository
 import yovi.putra.moviecatalogue.ui.movie.detail.DetailMovieViewModel
 import yovi.putra.moviecatalogue.ui.movie.list.MovieFmViewModel
+import yovi.putra.moviecatalogue.ui.tvshow.detail.DetailTVShowViewModel
+import yovi.putra.moviecatalogue.ui.tvshow.list.TVShowViewModel
 
 val networkModule = module {
     single { RetrofitService.api<MovieApi>() }
@@ -24,6 +26,8 @@ val dataSourceModule = module {
 val viewModelModule = module {
     viewModel { MovieFmViewModel(get()) }
     viewModel { DetailMovieViewModel(get()) }
+    viewModel { TVShowViewModel(get()) }
+    viewModel { DetailTVShowViewModel(get()) }
 }
 
 val appModules: List<Module> = listOf(dataSourceModule, networkModule, viewModelModule)

@@ -51,7 +51,7 @@ abstract class BaseFragment : Fragment(), IBaseView {
     override val contextView: Context
         get() = context as Context
 
-    override fun onShowLoader() {}
+    override fun onShowLoader() { activity?.onShowLoader() }
 
-    override fun onHideLoader() {}
+    override fun onHideLoader() { activity?.onHideLoader() }
 }

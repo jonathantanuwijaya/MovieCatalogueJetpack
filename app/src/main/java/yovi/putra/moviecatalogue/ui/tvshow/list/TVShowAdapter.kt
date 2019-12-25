@@ -1,4 +1,4 @@
-package yovi.putra.moviecatalogue.ui.tvshow
+package yovi.putra.moviecatalogue.ui.tvshow.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -22,7 +22,7 @@ class TVShowAdapter(private val listener: (TVShowItem) -> Unit)
                 .inflate(R.layout.item_movie, parent, false)
         )
 
-    fun setItem(data: MutableList<TVShowItem>) {
+    fun setItem(data: List<TVShowItem>) {
         item.addAll(data)
         this.notifyDataSetChanged()
     }

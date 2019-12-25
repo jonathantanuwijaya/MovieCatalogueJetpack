@@ -22,7 +22,7 @@
         </activity>
 
         <activity android:name=".ui.movie.detail.DetailMovieActivity"/>
-        <activity android:name=".ui.tvshow.DetailTVShowActivity"/>
+        <activity android:name=".ui.tvshow.detail.DetailTVShowActivity"/>
     </application>
 
 </manifest>

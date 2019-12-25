@@ -1,4 +1,4 @@
-package yovi.putra.moviecatalogue.ui.movie.detail
+package yovi.putra.moviecatalogue.ui.tvshow.detail
 
 import android.content.Context
 import android.content.Intent
@@ -14,21 +14,21 @@ import yovi.putra.moviecatalogue.core.utils.state.LoaderState
 import yovi.putra.moviecatalogue.core.utils.state.ResultState
 import yovi.putra.moviecatalogue.core.utils.ui.load
 import yovi.putra.moviecatalogue.core.utils.ui.toast
-import yovi.putra.moviecatalogue.data.entity.MovieDetailResponse
+import yovi.putra.moviecatalogue.data.entity.TVShowDetailResponse
 
-class DetailMovieActivity : BaseToolbarActivity() {
+class DetailTVShowActivity : BaseToolbarActivity() {
+
     companion object {
         private const val MOVIE_ID = "id"
-
-        fun navigate(context: Context, id: Int) {
-            val intent = Intent(context, DetailMovieActivity::class.java).apply {
-                putExtra(MOVIE_ID, id)
+        fun navigate(context: Context, idTvShow: Int) {
+            val intent = Intent(context, DetailTVShowActivity::class.java).apply {
+                putExtra(MOVIE_ID, idTvShow)
             }
             context.startActivity(intent)
         }
     }
 
-    private val movieVM: DetailMovieViewModel by viewModel()
+    private val tvShowVM: DetailTVShowViewModel by viewModel()
 
     override fun setupLayoutId(): Int = R.layout.activity_detail_movie
 
@@ -36,18 +36,18 @@ class DetailMovieActivity : BaseToolbarActivity() {
 
     override fun setupData() {
         val id = intent.getIntExtra(MOVIE_ID, -1)
-        movieVM.loader.observe(this, loadingObserver)
-        movieVM.getMovie(id)?.observe(this, movieDetailObserver)
+        tvShowVM.getTVShow(id)?.observe(this, tvShowDetailObserver)
+        tvShowVM.loader.observe(this, loadingObserver)
     }
 
     override fun setupUI() {
         setToolbar(R.id.toolbar)
     }
 
-    private val movieDetailObserver = Observer<ResultState> {
+    private val tvShowDetailObserver = Observer<ResultState> {
         when (it) {
             is ResultState.Success<*> -> {
-                when (it.data) { is MovieDetailResponse -> { binding(it.data) } }
+                when (it.data) { is TVShowDetailResponse -> { binding(it.data) } }
             }
             is ResultState.Error -> {
                 toast(errorMessage(this, it.error))
@@ -63,14 +63,15 @@ class DetailMovieActivity : BaseToolbarActivity() {
     }
 
 
-    private fun binding(movie: MovieDetailResponse?) {
-        movie?.apply {
-            toolbar_title.text = title
-            tv_title.text = release_date
-            tv_rating.text = vote_average.toString()
-            tv_overview.text = overview
-            img_poster.load(IMAGE_URL + poster_path)
-            img_banner.load(IMAGE_URL + backdrop_path)
-        }
+    private fun binding(tvShow: TVShowDetailResponse?) {
+        tvShow?.apply {
+           toolbar_title.text = name
+           tv_title.text = first_air_date
+           tv_rating.text = vote_average.toString()
+           tv_overview.text = overview
+
+           img_poster.load(IMAGE_URL + poster_path)
+           img_banner.load(IMAGE_URL + poster_path)
+       }
     }
 }

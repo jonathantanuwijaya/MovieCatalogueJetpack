@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import org.json.JSONObject
 import retrofit2.HttpException
 import yovi.putra.moviecatalogue.R
+import yovi.putra.moviecatalogue.core.utils.ui.LoadingController
 
 /**
  * Created by yovi.putra
@@ -16,6 +17,10 @@ import yovi.putra.moviecatalogue.R
  * Company SIEMO - PT. Multipolar Technology, Tbk
  */
 abstract class BaseActivity : AppCompatActivity(), IBaseView {
+
+    private val loading: LoadingController by lazy {
+        LoadingController(this)
+    }
 
     override val contextView: Context
         get() = this
@@ -33,7 +38,11 @@ abstract class BaseActivity : AppCompatActivity(), IBaseView {
 
     abstract fun setupUI()
 
-    override fun onShowLoader() {}
+    override fun onShowLoader() {
+        loading.show()
+    }
 
-    override fun onHideLoader() {}
+    override fun onHideLoader() {
+        loading.hide()
+    }
 }

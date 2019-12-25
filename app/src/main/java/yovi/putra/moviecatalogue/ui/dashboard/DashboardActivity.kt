@@ -35,5 +35,6 @@ class DashboardActivity : BaseActivity(), BottomNavigationView.OnNavigationItemS
 
     private var movieFm = Observer<ArrayList<Fragment>> {
         frag = it
+        fragmentReplace(R.id.container, frag[0])
     }
 }
