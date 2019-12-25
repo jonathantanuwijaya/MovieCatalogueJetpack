@@ -16,13 +16,13 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import yovi.putra.moviecatalogue.R
-import yovi.putra.moviecatalogue.ui.dashboard.MainActivity
+import yovi.putra.moviecatalogue.ui.dashboard.DashboardActivity
 import yovi.putra.moviecatalogue.core.utils.RecyclerViewItemCountAssertion
 
 @RunWith(AndroidJUnit4::class)
 class MovieFmTest {
     @Rule
-    @JvmField var activity = ActivityTestRule(MainActivity::class.java)
+    @JvmField var activity = ActivityTestRule(DashboardActivity::class.java)
 
     @Before
     fun setUp() {

@@ -5,16 +5,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_dashboard.*
 import yovi.putra.moviecatalogue.R
 import yovi.putra.moviecatalogue.core.base.BaseActivity
 import yovi.putra.moviecatalogue.core.utils.ui.fragmentReplace
 
-class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class DashboardActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
     private lateinit var menuVM : DashboardViewModel
     private var frag = arrayListOf<Fragment>()
 
-    override fun setupLayoutId(): Int = R.layout.activity_main
+    override fun setupLayoutId(): Int = R.layout.activity_dashboard
 
     override fun setupData() {
         menuVM = ViewModelProviders.of(this).get(DashboardViewModel::class.java)

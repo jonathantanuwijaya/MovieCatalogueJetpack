@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.fragment_movie.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import yovi.putra.moviecatalogue.R
 import yovi.putra.moviecatalogue.core.base.BaseFragment
+import yovi.putra.moviecatalogue.core.utils.network.NetworkThrowable.errorMessage
 import yovi.putra.moviecatalogue.core.utils.state.LoaderState
 import yovi.putra.moviecatalogue.core.utils.state.ResultState
 import yovi.putra.moviecatalogue.data.entity.MovieListResponse
@@ -49,7 +50,7 @@ class MovieFm : BaseFragment() {
                 }
             }
             is ResultState.Error -> {
-                Toast.makeText(contextView, it.error?.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(contextView, errorMessage(contextView, it.error), Toast.LENGTH_SHORT).show()
             }
         }
     }

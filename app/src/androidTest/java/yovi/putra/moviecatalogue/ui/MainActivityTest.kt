@@ -12,13 +12,13 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import yovi.putra.moviecatalogue.R
 import yovi.putra.moviecatalogue.core.utils.RecyclerViewItemCountAssertion
-import yovi.putra.moviecatalogue.ui.dashboard.MainActivity
+import yovi.putra.moviecatalogue.ui.dashboard.DashboardActivity
 
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {
 
     @Rule
-    @JvmField var activity = ActivityTestRule(MainActivity::class.java)
+    @JvmField var activity = ActivityTestRule(DashboardActivity::class.java)
 
     @Test
     fun onNavigationItemSelected() {

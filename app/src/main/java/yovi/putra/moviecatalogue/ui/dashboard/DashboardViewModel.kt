@@ -1,7 +1,6 @@
 package yovi.putra.moviecatalogue.ui.dashboard
 
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import yovi.putra.moviecatalogue.ui.movie.list.MovieFm
