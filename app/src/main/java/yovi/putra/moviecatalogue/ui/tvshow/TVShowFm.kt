@@ -23,13 +23,13 @@ class TVShowFm : BaseFragment() {
             )
         }
         tvShowVM = ViewModelProviders.of(this).get(TVShowViewModel::class.java)
-        adapter.setItem(tvShowVM.getTvShow())
+        //adapter.setItem(tvShowVM.getTvShow())
     }
 
     override fun setupUI() {
         swiperefresh.setColorSchemeColors(ContextCompat.getColor(contextView, R.color.colorAccent))
         swiperefresh.setOnRefreshListener {
-            adapter.setItem(tvShowVM.getTvShow())
+           // adapter.setItem(tvShowVM.getTvShow())
             onHideLoader()
         }
         list_item.layoutManager = GridLayoutManager(contextView, 2)

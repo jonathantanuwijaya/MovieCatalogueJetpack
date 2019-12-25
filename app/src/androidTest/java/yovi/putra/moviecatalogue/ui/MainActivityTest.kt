@@ -12,6 +12,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import yovi.putra.moviecatalogue.R
 import yovi.putra.moviecatalogue.core.utils.RecyclerViewItemCountAssertion
+import yovi.putra.moviecatalogue.ui.dashboard.MainActivity
 
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {

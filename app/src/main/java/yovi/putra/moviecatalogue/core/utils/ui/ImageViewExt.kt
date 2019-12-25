@@ -1,4 +1,4 @@
-package yovi.putra.moviecatalogue.core.utils
+package yovi.putra.moviecatalogue.core.utils.ui
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide

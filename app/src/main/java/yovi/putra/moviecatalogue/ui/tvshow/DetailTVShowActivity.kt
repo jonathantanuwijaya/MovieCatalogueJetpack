@@ -3,13 +3,8 @@ package yovi.putra.moviecatalogue.ui.tvshow
 import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
-import kotlinx.android.synthetic.main.activity_detail_movie.*
-import kotlinx.android.synthetic.main.app_bar.*
 import yovi.putra.moviecatalogue.R
 import yovi.putra.moviecatalogue.core.base.BaseToolbarActivity
-import yovi.putra.moviecatalogue.core.common.Constant.IMAGE_URL
-import yovi.putra.moviecatalogue.core.utils.load
-import yovi.putra.moviecatalogue.data.entity.TVShow
 
 class DetailTVShowActivity : BaseToolbarActivity() {
 
@@ -23,7 +18,7 @@ class DetailTVShowActivity : BaseToolbarActivity() {
         }
     }
 
-    private var tvShow: TVShow? = null
+   // private var tvShow: TVShow? = null
 
     override fun setupLayoutId(): Int = R.layout.activity_detail_movie
 
@@ -32,12 +27,12 @@ class DetailTVShowActivity : BaseToolbarActivity() {
     override fun setupData() {
         val id = intent.getIntExtra(MOVIE_ID, -1)
         val vm = ViewModelProviders.of(this).get(TVShowViewModel::class.java)
-        tvShow = vm.getTvShow(id)
+    //    tvShow = vm.getTvShow(id)
     }
 
     override fun setupUI() {
         setToolbar(R.id.toolbar)
-        tvShow?.apply {
+    /*    tvShow?.apply {
             toolbar_title.text = name
             tv_title.text = first_air_date
             tv_rating.text = vote_average?.toString()
@@ -45,6 +40,6 @@ class DetailTVShowActivity : BaseToolbarActivity() {
 
             img_poster.load(IMAGE_URL + poster_path)
             img_banner.load(IMAGE_URL + poster_path)
-        }
+        }*/
     }
 }

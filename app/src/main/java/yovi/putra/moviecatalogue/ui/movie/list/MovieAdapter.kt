@@ -1,4 +1,4 @@
-package yovi.putra.moviecatalogue.ui.movie
+package yovi.putra.moviecatalogue.ui.movie.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,13 +8,13 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_movie.*
 import yovi.putra.moviecatalogue.R
 import yovi.putra.moviecatalogue.core.common.Constant.IMAGE_URL
-import yovi.putra.moviecatalogue.core.utils.load
-import yovi.putra.moviecatalogue.data.entity.Movie
+import yovi.putra.moviecatalogue.core.utils.ui.load
+import yovi.putra.moviecatalogue.data.entity.MovieItem
 
-class MovieAdapter(private val listener: (Movie) -> Unit)
+class MovieAdapter(private val listener: (MovieItem) -> Unit)
     : RecyclerView.Adapter<MovieAdapter.VHolder>() {
 
-    private var item = mutableListOf<Movie>()
+    private var item = mutableListOf<MovieItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VHolder =
         VHolder(
@@ -22,9 +22,11 @@ class MovieAdapter(private val listener: (Movie) -> Unit)
                 .inflate(R.layout.item_movie, parent, false)
         )
 
-    fun setItem(data: MutableList<Movie>) {
-        item.addAll(data)
-        this.notifyDataSetChanged()
+    fun setItem(data: List<MovieItem>?) {
+        data?.let {
+            item.addAll(it)
+            this.notifyDataSetChanged()
+        }
     }
 
     override fun getItemCount(): Int = item.size
@@ -35,9 +37,9 @@ class MovieAdapter(private val listener: (Movie) -> Unit)
     class VHolder(override val containerView: View)
         : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-        fun binding(movie: Movie, listener: (Movie) -> Unit){
+        fun binding(movie: MovieItem, listener: (MovieItem) -> Unit){
             tv_title.text = movie.title
-            tv_rating.text = movie.vote_average
+            tv_rating.text = movie.vote_average.toString()
             img_poster.load(IMAGE_URL + movie.poster_path)
             containerView.setOnClickListener { listener(movie) }
         }

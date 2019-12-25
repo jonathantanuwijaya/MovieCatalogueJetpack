@@ -1,16 +1,7 @@
 package yovi.putra.moviecatalogue.ui.tvshow
 
-import com.google.gson.Gson
-import junit.framework.TestCase.assertEquals
-import junit.framework.TestCase.assertNotNull
-import org.junit.Assert.assertNotEquals
-import org.junit.Before
-import org.junit.Test
-import yovi.putra.moviecatalogue.data.entity.Movie
-import yovi.putra.moviecatalogue.data.entity.TVShow
-
 class TVShowViewModelTest {
-
+/*
     private lateinit var tvShowVM: TVShowViewModel
     private lateinit var tvShow: TVShow
 
@@ -66,7 +57,7 @@ class TVShowViewModelTest {
         assertEquals(tvShow.origin_country, data?.origin_country)
         assertEquals(tvShow.popularity, data?.popularity)
         assertEquals(tvShow.vote_count, data?.vote_count)
-    }
+    }*/
 }
 
 

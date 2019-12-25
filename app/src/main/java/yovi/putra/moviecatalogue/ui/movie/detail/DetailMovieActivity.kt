@@ -1,15 +1,11 @@
-package yovi.putra.moviecatalogue.ui.movie
+package yovi.putra.moviecatalogue.ui.movie.detail
 
 import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
-import kotlinx.android.synthetic.main.activity_detail_movie.*
-import kotlinx.android.synthetic.main.app_bar.*
 import yovi.putra.moviecatalogue.R
 import yovi.putra.moviecatalogue.core.base.BaseToolbarActivity
-import yovi.putra.moviecatalogue.core.common.Constant.IMAGE_URL
-import yovi.putra.moviecatalogue.core.utils.load
-import yovi.putra.moviecatalogue.data.entity.Movie
+import yovi.putra.moviecatalogue.ui.movie.list.MovieFmViewModel
 
 class DetailMovieActivity : BaseToolbarActivity() {
     companion object {
@@ -23,7 +19,7 @@ class DetailMovieActivity : BaseToolbarActivity() {
         }
     }
 
-    private var movie: Movie? = null
+    //private var movie: Movie? = null
 
     override fun setupLayoutId(): Int = R.layout.activity_detail_movie
 
@@ -31,18 +27,18 @@ class DetailMovieActivity : BaseToolbarActivity() {
 
     override fun setupData() {
         val id = intent.getIntExtra(MOVIE_ID, -1)
-        val vm = ViewModelProviders.of(this).get(MovieViewModel::class.java)
-        movie = vm.getMovieById(id)
+        val vm = ViewModelProviders.of(this).get(MovieFmViewModel::class.java)
+        //movie = vm.getMovieById(id)
     }
 
     override fun setupUI() {
         setToolbar(R.id.toolbar)
-        movie?.apply {
+        /*movie?.apply {
             toolbar_title.text = title
             tv_title.text = release_date
             tv_rating.text = vote_average
             tv_overview.text = overview
             img_poster.load(IMAGE_URL + poster_path)
-        }
+        }*/
     }
 }

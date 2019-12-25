@@ -2,7 +2,7 @@ package yovi.putra.moviecatalogue.data.repository
 
 import io.reactivex.Observable
 import yovi.putra.moviecatalogue.core.common.Constant
-import yovi.putra.moviecatalogue.core.utils.RxUtils
+import yovi.putra.moviecatalogue.core.utils.threat.RxUtils
 import yovi.putra.moviecatalogue.data.entity.TVShowDetailResponse
 import yovi.putra.moviecatalogue.data.entity.TVShowListResponse
 import yovi.putra.moviecatalogue.data.remote.TVShowApi

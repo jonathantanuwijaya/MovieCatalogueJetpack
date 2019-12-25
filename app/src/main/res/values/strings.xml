@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MovieCatalogue</string>
+    <string name="app_name">Movie Catalogue</string>
 
     <string name="movie">Film</string>
     <string name="tvshow">TV Tayang</string>

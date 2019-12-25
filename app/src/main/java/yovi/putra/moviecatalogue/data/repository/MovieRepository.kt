@@ -1,7 +1,7 @@
 package yovi.putra.moviecatalogue.data.repository
 
 import yovi.putra.moviecatalogue.core.common.Constant
-import yovi.putra.moviecatalogue.core.utils.RxUtils
+import yovi.putra.moviecatalogue.core.utils.threat.RxUtils
 import yovi.putra.moviecatalogue.data.entity.MovieDetailResponse
 import yovi.putra.moviecatalogue.data.entity.MovieListResponse
 import yovi.putra.moviecatalogue.data.remote.MovieApi
