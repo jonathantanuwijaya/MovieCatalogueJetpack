@@ -2,6 +2,7 @@ package yovi.putra.moviecatalogue.ui.movie.detail
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_detail_movie.*
 import kotlinx.android.synthetic.main.app_bar.*
@@ -34,13 +35,13 @@ class DetailMovieActivity : BaseToolbarActivity() {
 
     override fun setButtonBack(): Boolean = true
 
-    override fun setupData() {
+    override fun setupData(savedInstanceState: Bundle?) {
         val id = intent.getIntExtra(MOVIE_ID, -1)
         movieVM.loader.observe(this, loadingObserver)
         movieVM.getMovie(id)?.observe(this, movieDetailObserver)
     }
 
-    override fun setupUI() {
+    override fun setupUI(savedInstanceState: Bundle?) {
         setToolbar(R.id.toolbar)
     }
 

@@ -11,6 +11,7 @@ import yovi.putra.moviecatalogue.core.base.BaseFragment
 import yovi.putra.moviecatalogue.core.utils.network.NetworkThrowable.errorMessage
 import yovi.putra.moviecatalogue.core.utils.state.LoaderState
 import yovi.putra.moviecatalogue.core.utils.state.ResultState
+import yovi.putra.moviecatalogue.core.utils.state.reObserver
 import yovi.putra.moviecatalogue.core.utils.ui.toast
 import yovi.putra.moviecatalogue.data.entity.MovieListResponse
 import yovi.putra.moviecatalogue.ui.movie.detail.DetailMovieActivity
@@ -28,8 +29,8 @@ class MovieFm : BaseFragment() {
                 movie.id
             )
         }
-        movieVM.movie.observe(this, movieObserve)
-        movieVM.loader.observe(this, loadingObserver)
+        movieVM.movie.reObserver(this, movieObserve)
+        movieVM.loader.reObserver(this, loadingObserver)
     }
 
     override fun setupUI() {

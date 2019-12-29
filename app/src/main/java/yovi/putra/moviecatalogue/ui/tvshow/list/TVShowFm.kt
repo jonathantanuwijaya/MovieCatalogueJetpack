@@ -11,6 +11,7 @@ import yovi.putra.moviecatalogue.core.base.BaseFragment
 import yovi.putra.moviecatalogue.core.utils.network.NetworkThrowable.errorMessage
 import yovi.putra.moviecatalogue.core.utils.state.LoaderState
 import yovi.putra.moviecatalogue.core.utils.state.ResultState
+import yovi.putra.moviecatalogue.core.utils.state.reObserver
 import yovi.putra.moviecatalogue.core.utils.ui.toast
 import yovi.putra.moviecatalogue.data.entity.TVShowListResponse
 import yovi.putra.moviecatalogue.ui.tvshow.detail.DetailTVShowActivity
@@ -30,8 +31,9 @@ class TVShowFm : BaseFragment() {
                     tvshow.id
                 )
             }
-        tvShowVM.tvShow.observe(this, tvShowObserve)
-        tvShowVM.loader.observe(this, loadingObserver)
+
+        tvShowVM.tvShow.reObserver(this, tvShowObserve)
+        tvShowVM.loader.reObserver(this, loadingObserver)
     }
 
     private var tvShowObserve = Observer<ResultState> {

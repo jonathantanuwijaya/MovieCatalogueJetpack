@@ -1,14 +1,8 @@
 package yovi.putra.moviecatalogue.core.base
 
 import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import org.json.JSONObject
-import retrofit2.HttpException
-import yovi.putra.moviecatalogue.R
 import yovi.putra.moviecatalogue.core.utils.ui.LoadingController
 
 /**
@@ -28,15 +22,15 @@ abstract class BaseActivity : AppCompatActivity(), IBaseView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(setupLayoutId())
-        setupData()
-        setupUI()
+        setupData(savedInstanceState)
+        setupUI(savedInstanceState)
     }
 
     abstract fun setupLayoutId() : Int
 
-    abstract fun setupData()
+    abstract fun setupData(savedInstanceState: Bundle?)
 
-    abstract fun setupUI()
+    abstract fun setupUI(savedInstanceState: Bundle?)
 
     override fun onShowLoader() {
         loading.show()

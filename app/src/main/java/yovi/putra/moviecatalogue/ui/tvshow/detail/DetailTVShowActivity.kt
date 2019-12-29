@@ -2,6 +2,7 @@ package yovi.putra.moviecatalogue.ui.tvshow.detail
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_detail_movie.*
 import kotlinx.android.synthetic.main.app_bar.*
@@ -34,13 +35,13 @@ class DetailTVShowActivity : BaseToolbarActivity() {
 
     override fun setButtonBack(): Boolean = true
 
-    override fun setupData() {
+    override fun setupData(savedInstanceState: Bundle?) {
         val id = intent.getIntExtra(MOVIE_ID, -1)
         tvShowVM.getTVShow(id)?.observe(this, tvShowDetailObserver)
         tvShowVM.loader.observe(this, loadingObserver)
     }
 
-    override fun setupUI() {
+    override fun setupUI(savedInstanceState: Bundle?) {
         setToolbar(R.id.toolbar)
     }
 
