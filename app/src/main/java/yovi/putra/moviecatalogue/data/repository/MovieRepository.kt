@@ -7,7 +7,7 @@ import yovi.putra.moviecatalogue.data.entity.MovieDetailResponse
 import yovi.putra.moviecatalogue.data.entity.MovieListResponse
 import yovi.putra.moviecatalogue.data.remote.MovieApi
 
-class MovieRepository(private val api: MovieApi) {
+open class MovieRepository(private val api: MovieApi) {
     fun getMovieList() : Observable<MovieListResponse> {
         return api.getMovieList(Constant.API_KEY, 1).compose(RxUtils.applyObservableAsync())
     }

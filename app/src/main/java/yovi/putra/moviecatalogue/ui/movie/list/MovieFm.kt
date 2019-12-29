@@ -11,7 +11,6 @@ import yovi.putra.moviecatalogue.core.base.BaseFragment
 import yovi.putra.moviecatalogue.core.utils.network.NetworkThrowable.errorMessage
 import yovi.putra.moviecatalogue.core.utils.state.LoaderState
 import yovi.putra.moviecatalogue.core.utils.state.ResultState
-import yovi.putra.moviecatalogue.core.utils.state.reObserver
 import yovi.putra.moviecatalogue.core.utils.ui.toast
 import yovi.putra.moviecatalogue.data.entity.MovieListResponse
 import yovi.putra.moviecatalogue.ui.movie.detail.DetailMovieActivity
@@ -29,14 +28,14 @@ class MovieFm : BaseFragment() {
                 movie.id
             )
         }
-        movieVM.movie.reObserver(this, movieObserve)
-        movieVM.loader.reObserver(this, loadingObserver)
+        movieVM.getMovie()?.observe(this, movieObserve)
+        movieVM.loader.observe(this, loadingObserver)
     }
 
     override fun setupUI() {
         swiperefresh.setColorSchemeColors(ContextCompat.getColor(contextView, R.color.colorAccent))
         swiperefresh.setOnRefreshListener {
-            movieVM.reloadMovie()
+            movieVM.setMovie()
         }
         list_item.layoutManager = GridLayoutManager(contextView, 2)
         list_item.overScrollMode = View.OVER_SCROLL_NEVER

@@ -9,21 +9,25 @@ import yovi.putra.moviecatalogue.core.utils.state.ResultState
 import yovi.putra.moviecatalogue.data.repository.TVShowRepository
 
 class TVShowViewModel(private val tvShowRepository: TVShowRepository) : BaseViewModel() {
-    private var tvShowResult = MutableLiveData<ResultState>()
-    val tvShow: LiveData<ResultState>
-        get() = tvShowResult
+    private var tvShow: MutableLiveData<ResultState>? = null
 
-    init {
-        reloadTVShow()
+    fun getTVShow(): LiveData<ResultState>? {
+        tvShow?.let {
+            loaderState.postValue(LoaderState.Hide)
+        } ?: run {
+            tvShow = MutableLiveData()
+            setTVShow()
+        }
+        return tvShow
     }
 
-    fun reloadTVShow() {
+    fun setTVShow() {
         loaderState.postValue(LoaderState.Show)
         tvShowRepository.getTVShowList()
             .doOnTerminate { loaderState.postValue(LoaderState.Hide) }
             .subscribe(
-                { tvShowResult.postValue(ResultState.Success(it)) },
-                { tvShowResult.postValue(ResultState.Error(it)) }
+                { tvShow?.postValue(ResultState.Success(it)) },
+                { tvShow?.postValue(ResultState.Error(it)) }
             )
             .addTo(subscriber)
     }

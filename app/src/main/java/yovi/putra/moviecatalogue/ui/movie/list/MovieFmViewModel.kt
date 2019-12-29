@@ -9,21 +9,25 @@ import yovi.putra.moviecatalogue.core.utils.state.ResultState
 import yovi.putra.moviecatalogue.data.repository.MovieRepository
 
 class MovieFmViewModel(private val movieRepository: MovieRepository) : BaseViewModel() {
-    private var movieResult = MutableLiveData<ResultState>()
-    val movie: LiveData<ResultState>
-        get() = movieResult
+    private var movie: MutableLiveData<ResultState>? = null
 
-    init {
-        reloadMovie()
+    fun getMovie(): LiveData<ResultState>? {
+        movie?.let {
+            loaderState.postValue(LoaderState.Hide)
+        } ?: run {
+            movie = MutableLiveData()
+            setMovie()
+        }
+        return movie
     }
 
-    fun reloadMovie() {
+    fun setMovie() {
         loaderState.postValue(LoaderState.Show)
         movieRepository.getMovieList()
             .doOnTerminate { loaderState.postValue(LoaderState.Hide) }
             .subscribe(
-                { movieResult.postValue(ResultState.Success(it)) },
-                { movieResult.postValue(ResultState.Error(it)) }
+                { movie?.postValue(ResultState.Success(it)) },
+                { movie?.postValue(ResultState.Error(it)) }
             )
             .addTo(subscriber)
     }

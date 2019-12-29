@@ -11,8 +11,9 @@ import androidx.fragment.app.FragmentPagerAdapter
  * Company SIEMO - PT. Multipolar Technology, Tbk
  */
 class VPagerAdapter(
-        fm: FragmentManager
-) : FragmentPagerAdapter(fm) {
+        fm: FragmentManager,
+        behavior: Int = BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+) : FragmentPagerAdapter(fm, behavior) {
     private var pagers = mutableListOf<VPager>()
 
     fun setItem(pagers: List<VPager>) {

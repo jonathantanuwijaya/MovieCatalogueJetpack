@@ -55,12 +55,13 @@ dependencies {
     testImplementation "junit:junit:$junit_version"
     testImplementation "androidx.arch.core:core-testing:$archlifecycle_version"
     testImplementation "androidx.test:core:$test_core_version"
-    testImplementation "org.mockito:mockito-core:$mockito_version"
+    testImplementation "org.mockito:mockito-core:$mockito_android_version"
 
     // Dependencies for Android unit tests
     androidTestImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressocore_version"
+    androidTestImplementation "org.mockito:mockito-core:$mockito_android_version"
     androidTestImplementation "org.mockito:mockito-android:$mockito_android_version"
 
     // Android Testing Support Library's runner and rules

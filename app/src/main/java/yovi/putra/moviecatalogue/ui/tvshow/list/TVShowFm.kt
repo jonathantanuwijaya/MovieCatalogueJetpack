@@ -11,7 +11,6 @@ import yovi.putra.moviecatalogue.core.base.BaseFragment
 import yovi.putra.moviecatalogue.core.utils.network.NetworkThrowable.errorMessage
 import yovi.putra.moviecatalogue.core.utils.state.LoaderState
 import yovi.putra.moviecatalogue.core.utils.state.ResultState
-import yovi.putra.moviecatalogue.core.utils.state.reObserver
 import yovi.putra.moviecatalogue.core.utils.ui.toast
 import yovi.putra.moviecatalogue.data.entity.TVShowListResponse
 import yovi.putra.moviecatalogue.ui.tvshow.detail.DetailTVShowActivity
@@ -32,8 +31,8 @@ class TVShowFm : BaseFragment() {
                 )
             }
 
-        tvShowVM.tvShow.reObserver(this, tvShowObserve)
-        tvShowVM.loader.reObserver(this, loadingObserver)
+        tvShowVM.getTVShow()?.observe(this, tvShowObserve)
+        tvShowVM.loader.observe(this, loadingObserver)
     }
 
     private var tvShowObserve = Observer<ResultState> {
@@ -59,7 +58,7 @@ class TVShowFm : BaseFragment() {
     override fun setupUI() {
         swiperefresh.setColorSchemeColors(ContextCompat.getColor(contextView, R.color.colorAccent))
         swiperefresh.setOnRefreshListener {
-           tvShowVM.reloadTVShow()
+           tvShowVM.setTVShow()
         }
         list_item.layoutManager = GridLayoutManager(contextView, 2)
         list_item.overScrollMode = View.OVER_SCROLL_NEVER
