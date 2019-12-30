@@ -15,13 +15,13 @@ class MovieFmViewModel(private val movieRepository: MovieRepository) : BaseViewM
         movie?.let {
             loaderState.postValue(LoaderState.Hide)
         } ?: run {
-            movie = MutableLiveData()
             setMovie()
         }
         return movie
     }
 
     fun setMovie() {
+        movie ?: run { movie = MutableLiveData() }
         loaderState.postValue(LoaderState.Show)
         movieRepository.getMovieList()
             .doOnTerminate { loaderState.postValue(LoaderState.Hide) }

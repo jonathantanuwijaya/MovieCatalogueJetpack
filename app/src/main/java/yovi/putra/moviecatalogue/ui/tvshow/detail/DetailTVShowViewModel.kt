@@ -12,9 +12,8 @@ class DetailTVShowViewModel(private val tvShowRepository: TVShowRepository) : Ba
     private var tvShowResult : MutableLiveData<ResultState>? = null
 
     fun getTVShow(tvShowId: Int): LiveData<ResultState>? {
-        if (tvShowResult == null) {
+        tvShowResult ?: run {
             tvShowResult = MutableLiveData()
-
             loaderState.postValue(LoaderState.Show)
             tvShowRepository.getTVShowDetail(tvShowId)
                 .doOnTerminate { loaderState.postValue(LoaderState.Hide) }

@@ -56,6 +56,7 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:$archlifecycle_version"
     testImplementation "androidx.test:core:$test_core_version"
     testImplementation "org.mockito:mockito-core:$mockito_android_version"
+    testImplementation "org.mockito:mockito-inline:$mockito_inline_version"
 
     // Dependencies for Android unit tests
     androidTestImplementation "junit:junit:$junit_version"

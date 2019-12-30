@@ -12,9 +12,8 @@ class DetailMovieViewModel(private val movieRepository: MovieRepository) : BaseV
     private var movieResult : MutableLiveData<ResultState>? = null
 
     fun getMovie(movieId: Int): LiveData<ResultState>? {
-        if (movieResult == null) {
+        movieResult ?: run {
             movieResult = MutableLiveData()
-
             loaderState.postValue(LoaderState.Show)
             movieRepository.getMovieDetail(movieId)
                 .doOnTerminate { loaderState.postValue(LoaderState.Hide) }
@@ -24,6 +23,7 @@ class DetailMovieViewModel(private val movieRepository: MovieRepository) : BaseV
                 )
                 .addTo(subscriber)
         }
+
         return movieResult
     }
 }

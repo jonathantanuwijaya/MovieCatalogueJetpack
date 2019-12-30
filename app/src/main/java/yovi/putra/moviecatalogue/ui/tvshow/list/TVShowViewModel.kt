@@ -15,13 +15,13 @@ class TVShowViewModel(private val tvShowRepository: TVShowRepository) : BaseView
         tvShow?.let {
             loaderState.postValue(LoaderState.Hide)
         } ?: run {
-            tvShow = MutableLiveData()
             setTVShow()
         }
         return tvShow
     }
 
     fun setTVShow() {
+        tvShow ?: run { tvShow = MutableLiveData() }
         loaderState.postValue(LoaderState.Show)
         tvShowRepository.getTVShowList()
             .doOnTerminate { loaderState.postValue(LoaderState.Hide) }
