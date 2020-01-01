@@ -22,8 +22,8 @@ class TVShowViewModel(private val tvShowRepository: TVShowRepository) : BaseView
 
     fun setTVShow() {
         tvShow ?: run { tvShow = MutableLiveData() }
-        loaderState.postValue(LoaderState.Show)
         tvShowRepository.getTVShowList()
+            .doOnSubscribe { loaderState.postValue(LoaderState.Show) }
             .doOnTerminate { loaderState.postValue(LoaderState.Hide) }
             .subscribe(
                 { tvShow?.postValue(ResultState.Success(it)) },

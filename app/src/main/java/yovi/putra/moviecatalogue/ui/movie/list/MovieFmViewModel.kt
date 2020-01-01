@@ -22,8 +22,8 @@ class MovieFmViewModel(private val movieRepository: MovieRepository) : BaseViewM
 
     fun setMovie() {
         movie ?: run { movie = MutableLiveData() }
-        loaderState.postValue(LoaderState.Show)
         movieRepository.getMovieList()
+            .doOnSubscribe { loaderState.postValue(LoaderState.Show) }
             .doOnTerminate { loaderState.postValue(LoaderState.Hide) }
             .subscribe(
                 { movie?.postValue(ResultState.Success(it)) },
