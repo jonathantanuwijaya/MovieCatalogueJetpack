@@ -32,8 +32,8 @@ class DetailMovieViewModelTest {
     lateinit var loaderObserver: Observer<LoaderState>
     @Mock
     lateinit var movieRepository: MovieRepository
-    lateinit var viewModel: DetailMovieViewModel
 
+    private lateinit var viewModel: DetailMovieViewModel
     private val jsonPath = "sample/movie_detail.json"
     private val movieId = 512200
 

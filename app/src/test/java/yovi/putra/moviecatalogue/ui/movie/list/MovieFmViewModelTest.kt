@@ -32,7 +32,8 @@ class MovieFmViewModelTest {
     lateinit var loaderObserver: Observer<LoaderState>
     @Mock
     lateinit var movieRepository: MovieRepository
-    lateinit var viewModel: MovieFmViewModel
+
+    private lateinit var viewModel: MovieFmViewModel
     private val jsonPath = "sample/movie.json"
 
     @Before

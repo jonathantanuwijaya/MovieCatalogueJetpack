@@ -32,8 +32,8 @@ class DetailTVShowViewModelTest {
     lateinit var loaderObserver: Observer<LoaderState>
     @Mock
     lateinit var tvShowRepository: TVShowRepository
-    lateinit var viewModel: DetailTVShowViewModel
 
+    private lateinit var viewModel: DetailTVShowViewModel
     private val jsonPath = "sample/tvshow_detail.json"
     private val tvShowId = 71912
 

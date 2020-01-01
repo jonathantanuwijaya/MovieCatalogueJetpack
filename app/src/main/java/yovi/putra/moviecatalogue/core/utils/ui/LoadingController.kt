@@ -1,5 +1,6 @@
 package yovi.putra.moviecatalogue.core.utils.ui
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.graphics.Color
@@ -11,6 +12,7 @@ class LoadingController(private val activity: Activity) {
 
     private var dialog: AlertDialog? = null
 
+    @SuppressLint("InflateParams")
     fun show() {
         val dialogBuilder = AlertDialog.Builder(activity)
         val dialogView = LayoutInflater.from(activity).inflate(R.layout.progress_dialog_layout, null)
