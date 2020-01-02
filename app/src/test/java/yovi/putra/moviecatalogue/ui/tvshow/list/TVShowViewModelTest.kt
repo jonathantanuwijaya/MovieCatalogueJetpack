@@ -19,7 +19,7 @@ import yovi.putra.moviecatalogue.core.utils.state.LoaderState
 import yovi.putra.moviecatalogue.core.utils.state.ResultState
 import yovi.putra.moviecatalogue.data.entity.TVShowListResponse
 import yovi.putra.moviecatalogue.data.repository.TVShowRepository
-import yovi.putra.moviecatalogue.ui.utils.JsonUtils
+import yovi.putra.moviecatalogue.core.utils.json.JsonUtils
 
 class TVShowViewModelTest {
     @Rule
@@ -32,13 +32,13 @@ class TVShowViewModelTest {
     @Mock
     lateinit var tvShowRepository: TVShowRepository
 
-    private lateinit var viewModel: TVShowViewModel
+    private lateinit var viewModel: TVShowFmViewModel
     private val jsonPath = "sample/tvshow.json"
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        viewModel = TVShowViewModel(tvShowRepository)
+        viewModel = TVShowFmViewModel(tvShowRepository)
     }
 
     @Test

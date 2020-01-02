@@ -1,4 +1,4 @@
-package yovi.putra.moviecatalogue.ui.utils
+package yovi.putra.moviecatalogue.core.utils.json
 
 import com.google.gson.Gson
 import java.io.File
@@ -11,5 +11,8 @@ object JsonUtils {
     }
 
     fun <T> getJsonObject(path: String, typeOfClass: Class<T>) : T =
-        Gson().fromJson(getJson(path), typeOfClass)
+        Gson().fromJson(
+            getJson(
+                path
+            ), typeOfClass)
 }

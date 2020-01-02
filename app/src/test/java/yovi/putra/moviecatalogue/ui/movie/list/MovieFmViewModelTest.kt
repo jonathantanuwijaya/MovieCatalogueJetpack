@@ -20,7 +20,7 @@ import yovi.putra.moviecatalogue.core.utils.state.LoaderState
 import yovi.putra.moviecatalogue.core.utils.state.ResultState
 import yovi.putra.moviecatalogue.data.entity.MovieListResponse
 import yovi.putra.moviecatalogue.data.repository.MovieRepository
-import yovi.putra.moviecatalogue.ui.utils.JsonUtils
+import yovi.putra.moviecatalogue.core.utils.json.JsonUtils
 
 class MovieFmViewModelTest {
     @Rule

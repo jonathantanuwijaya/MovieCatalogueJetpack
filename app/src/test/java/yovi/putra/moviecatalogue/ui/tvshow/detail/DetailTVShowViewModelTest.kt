@@ -20,7 +20,7 @@ import yovi.putra.moviecatalogue.core.utils.state.ResultState
 import yovi.putra.moviecatalogue.data.entity.MovieDetailResponse
 import yovi.putra.moviecatalogue.data.entity.TVShowDetailResponse
 import yovi.putra.moviecatalogue.data.repository.TVShowRepository
-import yovi.putra.moviecatalogue.ui.utils.JsonUtils
+import yovi.putra.moviecatalogue.core.utils.json.JsonUtils
 
 class DetailTVShowViewModelTest {
     @Rule

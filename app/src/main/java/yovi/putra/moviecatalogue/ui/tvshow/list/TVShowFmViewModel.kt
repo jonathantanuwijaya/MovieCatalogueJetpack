@@ -8,7 +8,7 @@ import yovi.putra.moviecatalogue.core.utils.state.LoaderState
 import yovi.putra.moviecatalogue.core.utils.state.ResultState
 import yovi.putra.moviecatalogue.data.repository.TVShowRepository
 
-class TVShowViewModel(private val tvShowRepository: TVShowRepository) : BaseViewModel() {
+class TVShowFmViewModel(private val tvShowRepository: TVShowRepository) : BaseViewModel() {
     private var tvShow: MutableLiveData<ResultState>? = null
 
     fun getTVShow(): LiveData<ResultState>? {

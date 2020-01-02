@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movie Catalogue</string>
+
+    <string name="no_internet_connection">Network problems, check your internet connection and please try again</string>
+    <string name="server_under_maintenance">The server is under maintenance</string>
+    <string name="cannot_connect_toserver">Unable to communicate with server, please try again later</string>
+
+    <string name="load_data">Loading data…</string>
+    <string name="movie">Movie</string>
+    <string name="tvshow">TV Show</string>
+
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+
+    <string name="vote_count">(%s votes)</string>
+</resources>

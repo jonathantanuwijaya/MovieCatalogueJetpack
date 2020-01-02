@@ -8,9 +8,9 @@
 
     <dimen name="title_toolbar_size">20sp</dimen>
 
-    <dimen name="card_radius_small">2dp</dimen>
     <dimen name="card_radius_medium">4dp</dimen>
     <dimen name="card_radius_big">6dp</dimen>
+    <dimen name="card_radius_circle">100dp</dimen>
 
     <dimen name="card_elevation_medium">1.5dp</dimen>
     <dimen name="card_elevation_big">2dp</dimen>

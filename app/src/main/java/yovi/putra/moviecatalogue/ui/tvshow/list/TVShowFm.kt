@@ -19,7 +19,7 @@ import yovi.putra.moviecatalogue.ui.tvshow.detail.DetailTVShowActivity
 class TVShowFm : BaseFragment() {
 
     private lateinit var adapter: TVShowAdapter
-    private val tvShowVM: TVShowViewModel by viewModel()
+    private val tvShowVM: TVShowFmViewModel by viewModel()
 
     override fun setupLayoutId(): Int = R.layout.fragment_tvshow
 

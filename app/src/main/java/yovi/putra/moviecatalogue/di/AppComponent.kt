@@ -12,7 +12,7 @@ import yovi.putra.moviecatalogue.ui.dashboard.DashboardViewModel
 import yovi.putra.moviecatalogue.ui.movie.detail.DetailMovieViewModel
 import yovi.putra.moviecatalogue.ui.movie.list.MovieFmViewModel
 import yovi.putra.moviecatalogue.ui.tvshow.detail.DetailTVShowViewModel
-import yovi.putra.moviecatalogue.ui.tvshow.list.TVShowViewModel
+import yovi.putra.moviecatalogue.ui.tvshow.list.TVShowFmViewModel
 
 val networkModule = module {
     single { RetrofitService.api<MovieApi>() }
@@ -28,7 +28,7 @@ val viewModelModule = module {
     viewModel { DashboardViewModel() }
     viewModel { MovieFmViewModel(get()) }
     viewModel { DetailMovieViewModel(get()) }
-    viewModel { TVShowViewModel(get()) }
+    viewModel { TVShowFmViewModel(get()) }
     viewModel { DetailTVShowViewModel(get()) }
 }
 

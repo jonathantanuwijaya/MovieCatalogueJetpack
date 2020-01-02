@@ -38,7 +38,7 @@ androidExtensions {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "androidx.core:core-ktx:$corektx_version"
 
@@ -52,6 +52,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycler_ext_version"
 
     // Dependencies for local unit tests
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation "junit:junit:$junit_version"
     testImplementation "androidx.arch.core:core-testing:$archlifecycle_version"
     testImplementation "androidx.test:core:$test_core_version"
