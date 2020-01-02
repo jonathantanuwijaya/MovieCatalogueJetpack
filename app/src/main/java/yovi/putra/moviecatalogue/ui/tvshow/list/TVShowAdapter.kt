@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_movie.*
+import kotlinx.android.synthetic.main.item_tvshow.*
 import yovi.putra.moviecatalogue.R
 import yovi.putra.moviecatalogue.core.common.Constant.IMAGE_URL
 import yovi.putra.moviecatalogue.core.utils.ui.load
@@ -19,7 +19,7 @@ class TVShowAdapter(private val listener: (TVShowItem) -> Unit)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VHolder =
         VHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_movie, parent, false)
+                .inflate(R.layout.item_tvshow, parent, false)
         )
 
     fun setItem(data: List<TVShowItem>) {
@@ -35,9 +35,11 @@ class TVShowAdapter(private val listener: (TVShowItem) -> Unit)
     class VHolder(override val containerView: View)
         : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-        fun binding(tvshow: TVShowItem, listener: (TVShowItem) -> Unit){
+        fun binding(tvshow: TVShowItem, listener: (TVShowItem) -> Unit) {
+            val context = containerView.context
             tv_title.text = tvshow.name
             tv_rating.text = tvshow.vote_average.toString()
+            tv_vote.text = String.format(context.getString(R.string.vote_count), tvshow.vote_count)
             containerView.setOnClickListener { listener(tvshow) }
             img_poster.load(IMAGE_URL + tvshow.poster_path)
         }

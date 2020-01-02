@@ -4,7 +4,8 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import kotlinx.android.synthetic.main.fragment_movie.*
+import kotlinx.android.synthetic.main.fragment_movie.swiperefresh
+import kotlinx.android.synthetic.main.fragment_tvshow.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import yovi.putra.moviecatalogue.R
 import yovi.putra.moviecatalogue.core.base.BaseFragment
@@ -20,7 +21,7 @@ class TVShowFm : BaseFragment() {
     private lateinit var adapter: TVShowAdapter
     private val tvShowVM: TVShowViewModel by viewModel()
 
-    override fun setupLayoutId(): Int = R.layout.fragment_movie
+    override fun setupLayoutId(): Int = R.layout.fragment_tvshow
 
     override fun setupData() {
         adapter =
@@ -60,8 +61,8 @@ class TVShowFm : BaseFragment() {
         swiperefresh.setOnRefreshListener {
            tvShowVM.setTVShow()
         }
-        list_item.layoutManager = GridLayoutManager(contextView, 2)
-        list_item.overScrollMode = View.OVER_SCROLL_NEVER
-        list_item.adapter = adapter
+        list_item_tvshow.layoutManager = GridLayoutManager(contextView, 2)
+        list_item_tvshow.overScrollMode = View.OVER_SCROLL_NEVER
+        list_item_tvshow.adapter = adapter
     }
 }

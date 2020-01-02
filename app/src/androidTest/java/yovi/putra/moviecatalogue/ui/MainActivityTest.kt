@@ -6,8 +6,7 @@ import androidx.test.espresso.ViewAction
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import org.hamcrest.Matchers.allOf
@@ -40,27 +39,18 @@ class MainActivityTest {
     @Test
     fun onNavigationItemSelected() {
         onView(withId(R.id.action_movie)).perform(click())
-        Thread.sleep(1000)
         onView(withId(R.id.action_tvshow)).perform(click())
-        Thread.sleep(1000)
     }
 
     @Test
     fun showMovieFragment() {
         onView(withId(R.id.action_movie)).perform(click())
-        Thread.sleep(1000)
-        //onView(withId(R.id.list_item)).check(matches(isDisplayed()))
-        onView(allOf(withId(R.id.list_item))).check(matches(isDisplayed()))
-        Thread.sleep(1000)
-
-
+        onView(withId(R.id.list_item)).check(matches(isDisplayed()))
     }
 
     @Test
     fun showTvShowFragment() {
         onView(withId(R.id.action_tvshow)).perform(click())
-        Thread.sleep(1000)
-        onView(withId(R.id.list_item)).check(matches(isDisplayed()))
-        Thread.sleep(1000)
+        onView(withId(R.id.list_item_tvshow)).check(matches(isDisplayed()))
     }
 }

@@ -3,7 +3,7 @@ package yovi.putra.moviecatalogue.ui.movie.list
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_movie.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import yovi.putra.moviecatalogue.R
@@ -37,7 +37,7 @@ class MovieFm : BaseFragment() {
         swiperefresh.setOnRefreshListener {
             movieVM.setMovie()
         }
-        list_item.layoutManager = GridLayoutManager(contextView, 2)
+        list_item.layoutManager = LinearLayoutManager(contextView)
         list_item.overScrollMode = View.OVER_SCROLL_NEVER
         list_item.adapter = adapter
     }

@@ -10,8 +10,10 @@
 
     <dimen name="card_radius_small">2dp</dimen>
     <dimen name="card_radius_medium">4dp</dimen>
+    <dimen name="card_radius_big">6dp</dimen>
 
     <dimen name="card_elevation_medium">1.5dp</dimen>
+    <dimen name="card_elevation_big">2dp</dimen>
 
     <dimen name="divider">0.6dp</dimen>
     <dimen name="divider_width">50dp</dimen>
@@ -20,6 +22,7 @@
 
     <!-- Item Movie-->
     <dimen name="item_poster_height">250dp</dimen>
+    <dimen name="item_movie_poster_height">180dp</dimen>
     <!-- Detail Movie-->
     <dimen name="banner_height">230dp</dimen>
     <dimen name="poster_width">100dp</dimen>

@@ -37,9 +37,12 @@ class MovieAdapter(private val listener: (MovieItem) -> Unit)
     class VHolder(override val containerView: View)
         : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-        fun binding(movie: MovieItem, listener: (MovieItem) -> Unit){
+        fun binding(movie: MovieItem, listener: (MovieItem) -> Unit) {
+            val context = containerView.context
             tv_title.text = movie.title
             tv_rating.text = movie.vote_average.toString()
+            tv_vote.text = String.format(context.getString(R.string.vote_count), movie.vote_count)
+            tv_description.text = movie.overview
             img_poster.load(IMAGE_URL + movie.poster_path)
             containerView.setOnClickListener { listener(movie) }
         }

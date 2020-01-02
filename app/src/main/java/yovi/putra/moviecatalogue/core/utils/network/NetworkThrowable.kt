@@ -1,8 +1,6 @@
 package yovi.putra.moviecatalogue.core.utils.network
 
 import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.util.Log
 import org.json.JSONObject
 import retrofit2.HttpException
@@ -22,10 +20,7 @@ object NetworkThrowable {
                 }
             }
             else -> {
-                val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-                val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
-                val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
-
+                val isConnected: Boolean = NetworkStateInfo.isConnected(context)
                 if (isConnected) {
                     context.getString(R.string.cannot_connect_toserver)
                 } else {

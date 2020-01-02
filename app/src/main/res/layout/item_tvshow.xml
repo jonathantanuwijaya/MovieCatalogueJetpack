@@ -16,7 +16,7 @@
 
         <ImageView
             android:id="@+id/img_poster"
-            android:layout_height="@dimen/item_movie_poster_height"
+            android:layout_height="@dimen/item_poster_height"
             android:layout_width="match_parent"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_placeholder"
@@ -94,26 +94,14 @@
             style="@style/TextView.BigBold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_small"
-            android:layout_marginEnd="@dimen/margin_small"
-            android:layout_marginTop="@dimen/margin_small"
+            android:paddingTop="@dimen/margin_small"
+            android:paddingBottom="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_extra_small"
+            android:paddingEnd="@dimen/margin_extra_small"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="@+id/img_poster"
             app:layout_constraintStart_toStartOf="@+id/img_poster"
             app:layout_constraintTop_toBottomOf="@+id/img_poster"
             tools:text="@string/title" />
-
-        <TextView
-            android:id="@+id/tv_description"
-            style="@style/TextView.Medium"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:layout_marginBottom="@dimen/margin_small"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/tv_title"
-            app:layout_constraintStart_toStartOf="@+id/tv_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title"
-            tools:text="@string/description" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>
