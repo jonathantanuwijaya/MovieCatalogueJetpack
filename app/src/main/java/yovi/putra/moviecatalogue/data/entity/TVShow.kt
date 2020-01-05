@@ -1,6 +1,6 @@
 package yovi.putra.moviecatalogue.data.entity
 
-class TVShowItem(
+data class TVShowItem(
     val id: Int,
     val vote_count: Int,
     val original_name: String,
