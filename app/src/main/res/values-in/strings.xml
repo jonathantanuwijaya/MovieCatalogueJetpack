@@ -9,6 +9,7 @@
     <string name="load_data">Memuat data…</string>
     <string name="movie">Film</string>
     <string name="tvshow">TV Tayang</string>
+    <string name="lbl_favorite">Favorit</string>
 
     <string name="title">Judul</string>
     <string name="description">Keterangan</string>

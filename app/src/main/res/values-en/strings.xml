@@ -9,6 +9,7 @@
     <string name="load_data">Loading data…</string>
     <string name="movie">Movie</string>
     <string name="tvshow">TV Show</string>
+    <string name="lbl_favorite">Favorite</string>
 
     <string name="title">Title</string>
     <string name="description">Description</string>
