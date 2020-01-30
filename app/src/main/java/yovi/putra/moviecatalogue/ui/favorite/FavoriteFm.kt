@@ -1,6 +1,7 @@
 package yovi.putra.moviecatalogue.ui.favorite
 
 import android.view.View
+import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_favorite.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import yovi.putra.moviecatalogue.R
@@ -15,13 +16,16 @@ class FavoriteFm : BaseFragment() {
 
     override fun setupData() {
         vPagerAdapter = VPagerAdapter(childFragmentManager)
-        vPagerAdapter.setItem(menuVM.pagers)
+        menuVM.pagers(requireContext())?.observe(this, Observer {
+            vPagerAdapter.setItem(it)
+        })
     }
 
     override fun setupUI() {
         viewpager.apply {
             adapter = vPagerAdapter
             overScrollMode = View.OVER_SCROLL_NEVER
+            tab_layout.setupWithViewPager(this)
         }
     }
 }

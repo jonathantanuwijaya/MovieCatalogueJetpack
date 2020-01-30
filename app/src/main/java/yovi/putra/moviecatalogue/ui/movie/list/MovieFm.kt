@@ -25,7 +25,7 @@ class MovieFm : BaseFragment() {
         adapter = MovieAdapter { movie ->
             DetailMovieActivity.navigate(
                 contextView,
-                movie.id
+                movie
             )
         }
         movieVM.getMovie()?.observe(this, movieObserve)

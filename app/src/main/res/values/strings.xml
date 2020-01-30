@@ -14,4 +14,8 @@
     <string name="description">Keterangan</string>
 
     <string name="vote_count">(%s suara)</string>
+
+    <string name="favorite_add_success">Favorit berhasil ditambahkan</string>
+    <string name="favorite_add_delete">Favorit berhasil dihapus</string>
+    <string name="favorite_empty">Daftar favorit belum tersedia</string>
 </resources>

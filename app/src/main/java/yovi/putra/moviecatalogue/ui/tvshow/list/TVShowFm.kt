@@ -28,7 +28,7 @@ class TVShowFm : BaseFragment() {
             TVShowAdapter { tvshow ->
                 DetailTVShowActivity.navigate(
                     contextView,
-                    tvshow.id
+                    tvshow
                 )
             }
 

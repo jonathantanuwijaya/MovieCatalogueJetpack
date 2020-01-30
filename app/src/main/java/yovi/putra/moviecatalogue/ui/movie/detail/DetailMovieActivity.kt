@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.Observer
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_detail_movie.*
 import kotlinx.android.synthetic.main.app_bar.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -16,14 +17,15 @@ import yovi.putra.moviecatalogue.core.utils.state.ResultState
 import yovi.putra.moviecatalogue.core.utils.ui.load
 import yovi.putra.moviecatalogue.core.utils.ui.toast
 import yovi.putra.moviecatalogue.data.entity.MovieDetailResponse
+import yovi.putra.moviecatalogue.data.entity.MovieItem
 
 class DetailMovieActivity : BaseToolbarActivity() {
     companion object {
-        private const val MOVIE_ID = "id"
+        private const val MOVIE = "movie"
 
-        fun navigate(context: Context, id: Int) {
+        fun navigate(context: Context, movie: MovieItem) {
             val intent = Intent(context, DetailMovieActivity::class.java).apply {
-                putExtra(MOVIE_ID, id)
+                putExtra(MOVIE, Gson().toJson(movie))
             }
             context.startActivity(intent)
         }
@@ -31,18 +33,27 @@ class DetailMovieActivity : BaseToolbarActivity() {
 
     private val movieVM: DetailMovieViewModel by viewModel()
 
+    private lateinit var movieItem: MovieItem
+
+    private var isFavorited: Boolean = false
+
     override fun setupLayoutId(): Int = R.layout.activity_detail_movie
 
     override fun setButtonBack(): Boolean = true
 
     override fun setupData(savedInstanceState: Bundle?) {
-        val id = intent.getIntExtra(MOVIE_ID, -1)
+        movieItem = Gson().fromJson(intent.getStringExtra(MOVIE), MovieItem::class.java)
         movieVM.loader.observe(this, loadingObserver)
-        movieVM.getMovie(id)?.observe(this, movieDetailObserver)
+        movieVM.getMovie(movieItem.id)?.observe(this, movieDetailObserver)
+        movieVM.isFavorited(movieItem.id)?.observe(this, isFavoritedObserver)
     }
 
     override fun setupUI(savedInstanceState: Bundle?) {
         setToolbar(R.id.toolbar)
+
+        bt_favorite.setOnClickListener {
+            setFavorite()
+        }
     }
 
     private val movieDetailObserver = Observer<ResultState> {
@@ -63,6 +74,13 @@ class DetailMovieActivity : BaseToolbarActivity() {
         }
     }
 
+    private val isFavoritedObserver = Observer<MovieItem?> {
+        it?.let {
+            setButtonFavorite(true)
+        } ?: run {
+            setButtonFavorite(false)
+        }
+    }
 
     private fun binding(movie: MovieDetailResponse?) {
         movie?.apply {
@@ -72,6 +90,22 @@ class DetailMovieActivity : BaseToolbarActivity() {
             tv_overview.text = overview
             img_poster.load(IMAGE_URL + poster_path)
             img_banner.load(IMAGE_URL + backdrop_path)
+        }
+    }
+
+    private fun setButtonFavorite(isFavorited: Boolean) {
+        this.isFavorited = isFavorited
+        if (isFavorited)
+            bt_favorite.setImageResource(R.drawable.ic_favorite_selected)
+        else
+            bt_favorite.setImageResource(R.drawable.ic_favorite_unselect)
+    }
+
+    private fun setFavorite() {
+        if (isFavorited) {
+            movieVM.deleteFavorite(movieItem)
+        } else {
+            movieVM.addFavorite(movieItem)
         }
     }
 }

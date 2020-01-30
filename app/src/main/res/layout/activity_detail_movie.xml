@@ -29,6 +29,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/include" />
 
+        <ImageView
+            android:id="@+id/bt_favorite"
+            android:layout_width="@dimen/icon_favorite"
+            android:layout_height="@dimen/icon_favorite"
+            android:src="@drawable/ic_favorite_unselect"
+            android:background="?selectableItemBackgroundBorderless"
+            android:layout_margin="@dimen/margin_medium"
+            app:layout_constraintBottom_toBottomOf="@+id/img_banner"
+            app:layout_constraintEnd_toEndOf="@+id/img_banner"
+            android:contentDescription="@string/description" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             style="@style/CardViewTheme"

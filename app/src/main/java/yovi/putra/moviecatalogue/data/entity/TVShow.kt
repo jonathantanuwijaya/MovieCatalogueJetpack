@@ -1,6 +1,11 @@
 package yovi.putra.moviecatalogue.data.entity
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "tvshow_table")
 data class TVShowItem(
+    @PrimaryKey
     val id: Int,
     val vote_count: Int,
     val original_name: String,

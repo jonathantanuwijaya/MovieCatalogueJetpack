@@ -2,10 +2,13 @@ package yovi.putra.moviecatalogue.ui.movie.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import io.reactivex.rxkotlin.addTo
+import kotlinx.coroutines.launch
 import yovi.putra.moviecatalogue.core.base.BaseViewModel
 import yovi.putra.moviecatalogue.core.utils.state.LoaderState
 import yovi.putra.moviecatalogue.core.utils.state.ResultState
+import yovi.putra.moviecatalogue.data.entity.MovieItem
 import yovi.putra.moviecatalogue.data.repository.MovieRepository
 
 class DetailMovieViewModel(private val movieRepository: MovieRepository) : BaseViewModel() {
@@ -26,4 +29,14 @@ class DetailMovieViewModel(private val movieRepository: MovieRepository) : BaseV
 
         return movieResult
     }
+
+    fun addFavorite(data: MovieItem) = viewModelScope.launch {
+        movieRepository.addFavorite(data)
+    }
+
+    fun deleteFavorite(data: MovieItem) = viewModelScope.launch {
+        movieRepository.deleteFavorite(data.id)
+    }
+
+    fun isFavorited(id: Int) : LiveData<MovieItem>? = movieRepository.getFavoriteById(id)
 }

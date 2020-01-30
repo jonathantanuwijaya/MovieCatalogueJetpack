@@ -32,6 +32,7 @@ class DashboardActivity : BaseActivity(), BottomNavigationView.OnNavigationItemS
         view_pager.apply {
             adapter = vPagerAdapter
             overScrollMode = View.OVER_SCROLL_NEVER
+            offscreenPageLimit = 3
             addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrollStateChanged(state: Int) {}
 
@@ -52,6 +53,7 @@ class DashboardActivity : BaseActivity(), BottomNavigationView.OnNavigationItemS
         when (item.itemId) {
             R.id.action_movie -> view_pager.currentItem = 0
             R.id.action_tvshow -> view_pager.currentItem = 1
+            R.id.action_favorite -> view_pager.currentItem = 2
         }
         return true
     }

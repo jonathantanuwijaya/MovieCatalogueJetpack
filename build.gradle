@@ -7,13 +7,19 @@ buildscript {
         kotlin_version = '1.3.61'
         appcompat_version = '1.1.0'
         corektx_version = '1.1.0'
-        lifecycler_ext_version = '2.1.0'
+        lifecycler_ext_version = '2.2.0'
+        viewmodelktx_version = '2.2.0-rc02'
+        /* Database */
+        room_version = '2.2.3'
+
+        /* Paging */
+        paging_version = '2.1.1'
 
         /* UI */
         constraintlayout_version = '1.1.3'
         recyclerview_vesion = '1.1.0'
         swiperefresh_version = '1.0.0'
-        google_material_version = '1.2.0-alpha03'
+        google_material_version = '1.2.0-alpha04'
         rxkotlin_version = '2.2.0'
         rxjava_version = '2.1.0'
 

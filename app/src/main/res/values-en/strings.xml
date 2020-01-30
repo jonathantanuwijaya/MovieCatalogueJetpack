@@ -15,4 +15,8 @@
     <string name="description">Description</string>
 
     <string name="vote_count">(%s votes)</string>
+
+    <string name = "favorite_add_success"> Favorite successfully added </string>
+    <string name = "favorite_add_delete"> Favorite successfully replaced </string>
+    <string name = "favorite_empty"> The list of favorites is not yet available </string>
 </resources>
