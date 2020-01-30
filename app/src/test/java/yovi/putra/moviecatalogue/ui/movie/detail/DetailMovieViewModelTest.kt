@@ -4,8 +4,11 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import io.reactivex.Observable
+import kotlinx.coroutines.runBlocking
 import okhttp3.MediaType
 import okhttp3.ResponseBody
+import org.hamcrest.CoreMatchers
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -16,11 +19,12 @@ import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 import retrofit2.HttpException
 import retrofit2.Response
+import yovi.putra.moviecatalogue.core.utils.json.JsonUtils
 import yovi.putra.moviecatalogue.core.utils.state.LoaderState
 import yovi.putra.moviecatalogue.core.utils.state.ResultState
 import yovi.putra.moviecatalogue.data.entity.MovieDetailResponse
+import yovi.putra.moviecatalogue.data.entity.MovieItem
 import yovi.putra.moviecatalogue.data.repository.MovieRepository
-import yovi.putra.moviecatalogue.core.utils.json.JsonUtils
 
 class DetailMovieViewModelTest {
     @Rule
@@ -35,6 +39,7 @@ class DetailMovieViewModelTest {
 
     private lateinit var viewModel: DetailMovieViewModel
     private val jsonPath = "sample/movie_detail.json"
+    private val jsonPathItem = "sample/movie_item.json"
     private val movieId = 512200
 
     @Before
@@ -85,4 +90,34 @@ class DetailMovieViewModelTest {
         loaderState.postValue(LoaderState.Hide)
         verify(loaderObserver).onChanged(refEq(loaderState.value))
     }
+
+    @Test
+    fun addFavorite() {
+        val repository = JsonUtils.getJsonObject(jsonPathItem, MovieItem::class.java)
+        runBlocking {
+            movieRepository.addFavorite(repository)
+            verify(movieRepository).addFavorite(repository)
+        }
+    }
+
+    @Test
+     fun getFavoriteStatus() {
+        val repository = JsonUtils.getJsonObject(jsonPathItem, MovieItem::class.java)
+         val response = MutableLiveData<MovieItem>()
+         response.value = repository
+         runBlocking {
+             movieRepository.getFavorite(repository.id)
+             `when`(movieRepository.getFavoriteById(repository.id)).thenReturn(response)
+             assertThat(response.value, CoreMatchers.equalTo(repository) )
+         }
+     }
+
+     @Test
+     fun deleteFavorite() {
+         val repository = JsonUtils.getJsonObject(jsonPathItem, MovieItem::class.java)
+         runBlocking {
+             movieRepository.deleteFavorite(repository.id)
+             verify(movieRepository).deleteFavorite(repository.id)
+         }
+     }
 }

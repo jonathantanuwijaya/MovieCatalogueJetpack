@@ -1,0 +1,20 @@
+{
+  "original_name":"The Mandalorian",
+  "id":82856,
+  "name":"The Mandalorian",
+  "popularity":759.563,
+  "vote_count":395,
+  "vote_average":7.9,
+  "first_air_date":"2019-11-12",
+  "poster_path":"\/BbNvKCuEF4SRzFXR16aK6ISFtR.jpg",
+  "genre_ids":[
+    10765,
+    10759
+  ],
+  "original_language":"en",
+  "backdrop_path":"\/o7qi2v4uWQ8bZ1tW3KI0Ztn2epk.jpg",
+  "overview":"Set after the fall of the Empire and before the emergence of the First Order, we follow the travails of a lone gunfighter in the outer reaches of the galaxy far from the authority of the New Republic.",
+  "origin_country":[
+    "US"
+  ]
+}
