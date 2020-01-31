@@ -14,7 +14,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import yovi.putra.moviecatalogue.R
 import yovi.putra.moviecatalogue.core.utils.threat.EspressoIdlingResource
-import yovi.putra.moviecatalogue.data.entity.TVShowDetailResponse
+import yovi.putra.moviecatalogue.data.entity.TVShowItem
 import yovi.putra.moviecatalogue.data.repository.DummyRepository
 import yovi.putra.moviecatalogue.ui.tvshow.detail.DetailTVShowActivity
 
@@ -22,13 +22,13 @@ import yovi.putra.moviecatalogue.ui.tvshow.detail.DetailTVShowActivity
 class DetailTVShowActivityTest {
     @Rule
     @JvmField var activity = ActivityTestRule(DetailTVShowActivity::class.java)
-    private lateinit var tvShow: TVShowDetailResponse
+    private lateinit var tvShow: TVShowItem
 
     @Before
     fun setUp() {
         IdlingRegistry.getInstance().register(EspressoIdlingResource.espressoIdlingResource)
-        tvShow = DummyRepository.getTVShowDetail()
-        DetailTVShowActivity.navigate(activity.activity, tvShow.id)
+        tvShow = DummyRepository.getTVShowItem()
+        DetailTVShowActivity.navigate(activity.activity, tvShow)
     }
 
     @After

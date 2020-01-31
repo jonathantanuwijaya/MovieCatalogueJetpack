@@ -4,8 +4,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import org.junit.After
@@ -38,6 +37,7 @@ class MainActivityTest {
     fun onNavigationItemSelected() {
         onView(withId(R.id.action_movie)).perform(click())
         onView(withId(R.id.action_tvshow)).perform(click())
+        onView(withId(R.id.action_favorite)).perform(click())
     }
 
     @Test
@@ -50,5 +50,11 @@ class MainActivityTest {
     fun showTvShowFragment() {
         onView(withId(R.id.action_tvshow)).perform(click())
         onView(withId(R.id.list_item_tvshow)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun showFavoriteFragment() {
+        onView(withId(R.id.action_favorite)).perform(click())
+        onView(withId(R.id.viewpager)).check(matches(isDisplayed()))
     }
 }

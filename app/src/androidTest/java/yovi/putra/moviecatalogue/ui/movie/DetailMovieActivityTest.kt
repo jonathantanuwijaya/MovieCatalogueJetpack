@@ -14,7 +14,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import yovi.putra.moviecatalogue.R
 import yovi.putra.moviecatalogue.core.utils.threat.EspressoIdlingResource
-import yovi.putra.moviecatalogue.data.entity.MovieDetailResponse
+import yovi.putra.moviecatalogue.data.entity.MovieItem
 import yovi.putra.moviecatalogue.data.repository.DummyRepository
 import yovi.putra.moviecatalogue.ui.movie.detail.DetailMovieActivity
 
@@ -22,13 +22,13 @@ import yovi.putra.moviecatalogue.ui.movie.detail.DetailMovieActivity
 class DetailMovieActivityTest {
     @Rule
     @JvmField var activity = ActivityTestRule(DetailMovieActivity::class.java)
-    private lateinit var movie: MovieDetailResponse
+    private lateinit var movie: MovieItem
 
     @Before
     fun setUp() {
         IdlingRegistry.getInstance().register(EspressoIdlingResource.espressoIdlingResource)
-        movie = DummyRepository.getMovieDetail()
-        DetailMovieActivity.navigate(activity.activity, movie.id)
+        movie = DummyRepository.getMovieItem()
+        DetailMovieActivity.navigate(activity.activity, movie)
     }
 
     @After

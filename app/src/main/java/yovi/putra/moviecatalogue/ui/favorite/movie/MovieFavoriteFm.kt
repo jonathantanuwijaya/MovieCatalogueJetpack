@@ -5,7 +5,8 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_movie.*
+import kotlinx.android.synthetic.main.fragment_movie.swiperefresh
+import kotlinx.android.synthetic.main.fragment_movie_favorite.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import yovi.putra.moviecatalogue.R
 import yovi.putra.moviecatalogue.core.base.BaseFragment
@@ -20,7 +21,7 @@ class MovieFavoriteFm : BaseFragment() {
 
     private val movieVM: MovieFavoriteViewModel by viewModel()
 
-    override fun setupLayoutId(): Int = R.layout.fragment_movie
+    override fun setupLayoutId(): Int = R.layout.fragment_movie_favorite
 
     override fun setupData() {
         adapter = MovieFavoriteAdapter { movie ->
@@ -37,9 +38,9 @@ class MovieFavoriteFm : BaseFragment() {
         swiperefresh.setOnRefreshListener {
             movieVM.getMovie()?.observe(this, movieObserve)
         }
-        list_item.layoutManager = LinearLayoutManager(contextView)
-        list_item.overScrollMode = View.OVER_SCROLL_NEVER
-        list_item.adapter = adapter
+        list_item_favorite.layoutManager = LinearLayoutManager(contextView)
+        list_item_favorite.overScrollMode = View.OVER_SCROLL_NEVER
+        list_item_favorite.adapter = adapter
     }
 
     private var movieObserve = Observer<PagedList<MovieItem>> {

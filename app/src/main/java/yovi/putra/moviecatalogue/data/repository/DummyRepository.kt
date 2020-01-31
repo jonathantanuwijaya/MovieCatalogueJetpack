@@ -2,10 +2,36 @@ package yovi.putra.moviecatalogue.data.repository
 
 import com.google.gson.Gson
 import yovi.putra.moviecatalogue.data.entity.MovieDetailResponse
+import yovi.putra.moviecatalogue.data.entity.MovieItem
 import yovi.putra.moviecatalogue.data.entity.TVShowDetailResponse
+import yovi.putra.moviecatalogue.data.entity.TVShowItem
 
 object DummyRepository {
 
+    fun getMovieItem() : MovieItem {
+        return Gson().fromJson("" +
+                "{\n" +
+                "  \"popularity\":532.535,\n" +
+                "  \"vote_count\":1553,\n" +
+                "  \"video\":false,\n" +
+                "  \"poster_path\":\"\\/db32LaOibwEliAmSL2jjDF6oDdj.jpg\",\n" +
+                "  \"id\":181812,\n" +
+                "  \"adult\":false,\n" +
+                "  \"backdrop_path\":\"\\/jOzrELAzFxtMx2I4uDGHOotdfsS.jpg\",\n" +
+                "  \"original_language\":\"en\",\n" +
+                "  \"original_title\":\"Star Wars: The Rise of Skywalker\",\n" +
+                "  \"genre_ids\":[\n" +
+                "    28,\n" +
+                "    12,\n" +
+                "    878\n" +
+                "  ],\n" +
+                "  \"title\":\"Star Wars: The Rise of Skywalker\",\n" +
+                "  \"vote_average\":6.6,\n" +
+                "  \"overview\":\"The surviving Resistance faces the First Order once again as the journey of Rey, Finn and Poe Dameron continues. With the power and knowledge of generations behind them, the final battle begins.\",\n" +
+                "  \"release_date\":\"2019-12-18\"\n" +
+                "}",
+            MovieItem::class.java)
+    }
     fun getMovieDetail() : MovieDetailResponse {
         return Gson().fromJson("" +
                 "{\n" +
@@ -106,6 +132,31 @@ object DummyRepository {
                 "}", MovieDetailResponse::class.java)
     }
 
+    fun getTVShowItem() : TVShowItem {
+        return Gson().fromJson(
+            "{\n" +
+                    "  \"original_name\":\"The Mandalorian\",\n" +
+                    "  \"id\":82856,\n" +
+                    "  \"name\":\"The Mandalorian\",\n" +
+                    "  \"popularity\":759.563,\n" +
+                    "  \"vote_count\":395,\n" +
+                    "  \"vote_average\":7.9,\n" +
+                    "  \"first_air_date\":\"2019-11-12\",\n" +
+                    "  \"poster_path\":\"\\/BbNvKCuEF4SRzFXR16aK6ISFtR.jpg\",\n" +
+                    "  \"genre_ids\":[\n" +
+                    "    10765,\n" +
+                    "    10759\n" +
+                    "  ],\n" +
+                    "  \"original_language\":\"en\",\n" +
+                    "  \"backdrop_path\":\"\\/o7qi2v4uWQ8bZ1tW3KI0Ztn2epk.jpg\",\n" +
+                    "  \"overview\":\"Set after the fall of the Empire and before the emergence of the First Order, we follow the travails of a lone gunfighter in the outer reaches of the galaxy far from the authority of the New Republic.\",\n" +
+                    "  \"origin_country\":[\n" +
+                    "    \"US\"\n" +
+                    "  ]\n" +
+                    "}",
+            TVShowItem::class.java
+        )
+    }
     fun getTVShowDetail() : TVShowDetailResponse {
         return Gson().fromJson("{\n" +
                 "  \"backdrop_path\":\"/bKETHQDD3QoIRTMOP4dfKwisL3g.jpg\",\n" +
