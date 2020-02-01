@@ -11,12 +11,12 @@
     <string name="tvshow">TV Tayang</string>
     <string name="lbl_favorite">Favorit</string>
 
+    <string name="movie_favorite">Film Favorit</string>
+    <string name="tvshow_favorite">TV Tayang Favorit</string>
+
     <string name="title">Judul</string>
     <string name="description">Keterangan</string>
 
     <string name="vote_count">(%s suara)</string>
 
-    <string name="favorite_add_success">Favorit berhasil ditambahkan</string>
-    <string name="favorite_add_delete">Favorit berhasil dihapus</string>
-    <string name="favorite_empty">Daftar favorit belum tersedia</string>
 </resources>

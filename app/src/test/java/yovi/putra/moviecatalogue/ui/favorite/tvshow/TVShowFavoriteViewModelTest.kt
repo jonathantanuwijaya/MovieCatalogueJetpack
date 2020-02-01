@@ -5,20 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
 import org.junit.Before
-import org.junit.Test
-
 import org.junit.Rule
+import org.junit.Test
 import org.mockito.ArgumentMatchers
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import yovi.putra.moviecatalogue.core.utils.json.JsonUtils
-import yovi.putra.moviecatalogue.data.entity.MovieItem
-import yovi.putra.moviecatalogue.data.entity.MovieListResponse
 import yovi.putra.moviecatalogue.data.entity.TVShowItem
 import yovi.putra.moviecatalogue.data.entity.TVShowListResponse
 import yovi.putra.moviecatalogue.data.repository.TVShowRepository
-import yovi.putra.moviecatalogue.ui.favorite.movie.MovieFavoriteViewModel
 import yovi.putra.moviecatalogue.ui.utils.mockPagedList
 
 class TVShowFavoriteViewModelTest {

@@ -14,7 +14,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.mockito.ArgumentMatchers
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
@@ -53,11 +52,11 @@ class TVShowViewModelTest {
         val repository = JsonUtils.getJsonObject(jsonPath, TVShowListResponse::class.java)
         val tvShowResponse = MutableLiveData<ResultState>()
 
-        Mockito.`when`(tvShowRepository.getTVShowList()).thenReturn(Observable.just(repository))
+        `when`(tvShowRepository.getTVShowList()).thenReturn(Observable.just(repository))
         tvShowResponse.value = ResultState.Success(repository)
 
         viewModel.getTVShow()?.observeForever(tvShowObserver)
-        Mockito.verify(tvShowObserver).onChanged(ArgumentMatchers.refEq(tvShowResponse.value))
+        verify(tvShowObserver).onChanged(ArgumentMatchers.refEq(tvShowResponse.value))
     }
 
     @Test
@@ -68,11 +67,11 @@ class TVShowViewModelTest {
         val errorResponse = Response.error<TVShowListResponse>(404, errorResponseBody)
         val exception = HttpException(errorResponse)
 
-        Mockito.`when`(tvShowRepository.getTVShowList()).thenReturn(Observable.error(exception))
+        `when`(tvShowRepository.getTVShowList()).thenReturn(Observable.error(exception))
         tvShowResponse.value = ResultState.Error(exception)
 
         viewModel.getTVShow()?.observeForever(tvShowObserver)
-        Mockito.verify(tvShowObserver).onChanged(ArgumentMatchers.refEq(tvShowResponse.value))
+        verify(tvShowObserver).onChanged(ArgumentMatchers.refEq(tvShowResponse.value))
     }
 
     @Test
@@ -80,12 +79,12 @@ class TVShowViewModelTest {
         val tvShowResponse = MutableLiveData<ResultState>()
         val repository = JsonUtils.getJsonObject(jsonPath, TVShowListResponse::class.java)
 
-        Mockito.`when`(tvShowRepository.getTVShowList()).thenReturn(Observable.just(repository))
+        `when`(tvShowRepository.getTVShowList()).thenReturn(Observable.just(repository))
         tvShowResponse.value = ResultState.Success(repository)
 
         viewModel.setTVShow()
         viewModel.getTVShow()?.observeForever(tvShowObserver)
-        Mockito.verify(tvShowObserver).onChanged(ArgumentMatchers.refEq(tvShowResponse.value))
+        verify(tvShowObserver).onChanged(ArgumentMatchers.refEq(tvShowResponse.value))
     }
 
     @Test
@@ -96,42 +95,42 @@ class TVShowViewModelTest {
         val errorResponse = Response.error<TVShowListResponse>(404, errorResponseBody)
         val exception = HttpException(errorResponse)
 
-        Mockito.`when`(tvShowRepository.getTVShowList()).thenReturn(Observable.error(exception))
+        `when`(tvShowRepository.getTVShowList()).thenReturn(Observable.error(exception))
         tvShowResponse.value = ResultState.Error(exception)
 
         viewModel.setTVShow()
         viewModel.getTVShow()?.observeForever(tvShowObserver)
-        Mockito.verify(tvShowObserver).onChanged(ArgumentMatchers.refEq(tvShowResponse.value))
+        verify(tvShowObserver).onChanged(ArgumentMatchers.refEq(tvShowResponse.value))
     }
 
     @Test
     fun getTVShowLoading() {
         val loaderState = MutableLiveData<LoaderState>()
 
-        Mockito.`when`(tvShowRepository.getTVShowList()).thenReturn(Observable.empty())
+        `when`(tvShowRepository.getTVShowList()).thenReturn(Observable.empty())
         viewModel.loader.observeForever(loaderObserver)
 
         loaderState.postValue(LoaderState.Show)
         viewModel.getTVShow()?.observeForever(tvShowObserver)
-        Mockito.verify(loaderObserver).onChanged(ArgumentMatchers.refEq(loaderState.value))
+        verify(loaderObserver).onChanged(ArgumentMatchers.refEq(loaderState.value))
 
         loaderState.postValue(LoaderState.Hide)
-        Mockito.verify(loaderObserver).onChanged(ArgumentMatchers.refEq(loaderState.value))
+        verify(loaderObserver).onChanged(ArgumentMatchers.refEq(loaderState.value))
     }
 
     @Test
     fun setTVShowLoading() {
         val loaderState = MutableLiveData<LoaderState>()
 
-        Mockito.`when`(tvShowRepository.getTVShowList()).thenReturn(Observable.empty())
+        `when`(tvShowRepository.getTVShowList()).thenReturn(Observable.empty())
         viewModel.loader.observeForever(loaderObserver)
 
         loaderState.postValue(LoaderState.Show)
         viewModel.setTVShow()
-        Mockito.verify(loaderObserver).onChanged(ArgumentMatchers.refEq(loaderState.value))
+        verify(loaderObserver).onChanged(ArgumentMatchers.refEq(loaderState.value))
 
         loaderState.postValue(LoaderState.Hide)
-        Mockito.verify(loaderObserver).onChanged(ArgumentMatchers.refEq(loaderState.value))
+        verify(loaderObserver).onChanged(ArgumentMatchers.refEq(loaderState.value))
     }
 
     @Test

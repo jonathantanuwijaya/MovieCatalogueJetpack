@@ -1,25 +1,28 @@
 package yovi.putra.moviecatalogue.data.entity
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity(tableName = "movie_table")
 data class MovieItem (
     @PrimaryKey
-    val id: Int,
-    val vote_count: Int,
-    val video: Boolean,
-    val vote_average: Double,
-    val title: String,
-    val popularity: Double,
-    val poster_path: String,
-    val original_language: String,
-    val original_title: String,
-    val backdrop_path: String,
-    val adult: Boolean,
-    val overview: String,
-    val release_date: String
-)
+    val id: Int = 0,
+    val vote_count: Int = 0,
+    val video: Boolean = false,
+    val vote_average: Double = 0.0,
+    val title: String = "",
+    val popularity: Double = 0.0,
+    val poster_path: String = "",
+    val original_language: String = "",
+    val original_title: String = "",
+    val backdrop_path: String = "",
+    val adult: Boolean = false,
+    val overview: String = "",
+    val release_date: String = ""
+) : Parcelable
 
 /* Response */
 // >> List of movie

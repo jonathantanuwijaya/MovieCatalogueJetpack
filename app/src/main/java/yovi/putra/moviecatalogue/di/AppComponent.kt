@@ -5,7 +5,6 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import yovi.putra.moviecatalogue.core.services.RetrofitService
-import yovi.putra.moviecatalogue.data.local.MovieDao
 import yovi.putra.moviecatalogue.data.local.MovieDatabase
 import yovi.putra.moviecatalogue.data.remote.MovieApi
 import yovi.putra.moviecatalogue.data.remote.TVShowApi

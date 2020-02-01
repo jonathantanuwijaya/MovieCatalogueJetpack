@@ -44,5 +44,6 @@ class TVShowFavoriteFm : BaseFragment() {
 
     private var tvShowObserve = Observer<PagedList<TVShowItem>> {
         adapter.submitList(it)
+        swiperefresh.isRefreshing = false
     }
 }

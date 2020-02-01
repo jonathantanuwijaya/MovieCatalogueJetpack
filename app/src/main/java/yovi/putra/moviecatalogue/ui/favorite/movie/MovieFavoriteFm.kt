@@ -1,4 +1,4 @@
-package com.yeputra.moviecatalogue.view.favorite
+package yovi.putra.moviecatalogue.ui.favorite.movie
 
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -11,8 +11,6 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import yovi.putra.moviecatalogue.R
 import yovi.putra.moviecatalogue.core.base.BaseFragment
 import yovi.putra.moviecatalogue.data.entity.MovieItem
-import yovi.putra.moviecatalogue.ui.favorite.movie.MovieFavoriteAdapter
-import yovi.putra.moviecatalogue.ui.favorite.movie.MovieFavoriteViewModel
 import yovi.putra.moviecatalogue.ui.movie.detail.DetailMovieActivity
 
 class MovieFavoriteFm : BaseFragment() {
@@ -45,6 +43,7 @@ class MovieFavoriteFm : BaseFragment() {
 
     private var movieObserve = Observer<PagedList<MovieItem>> {
         adapter.submitList(it)
+        swiperefresh.isRefreshing = false
     }
 }
 

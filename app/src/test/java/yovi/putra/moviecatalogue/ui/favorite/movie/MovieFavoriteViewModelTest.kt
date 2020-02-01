@@ -4,11 +4,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
-import io.reactivex.Observable
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.ArgumentMatchers
 import org.mockito.ArgumentMatchers.refEq
 import org.mockito.Mock
 import org.mockito.Mockito.`when`

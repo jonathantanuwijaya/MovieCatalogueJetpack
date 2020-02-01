@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_detail_movie.*
 import kotlinx.android.synthetic.main.app_bar.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -22,10 +21,10 @@ import yovi.putra.moviecatalogue.data.entity.TVShowItem
 class DetailTVShowActivity : BaseToolbarActivity() {
 
     companion object {
-        private const val TVSHOW = "data"
+        const val TVSHOW = "data"
         fun navigate(context: Context, tvShow: TVShowItem) {
             val intent = Intent(context, DetailTVShowActivity::class.java).apply {
-                putExtra(TVSHOW, Gson().toJson(tvShow))
+                putExtra(TVSHOW, tvShow)
             }
             context.startActivity(intent)
         }
@@ -42,7 +41,7 @@ class DetailTVShowActivity : BaseToolbarActivity() {
     override fun setButtonBack(): Boolean = true
 
     override fun setupData(savedInstanceState: Bundle?) {
-        tvShowItem = Gson().fromJson(intent.getStringExtra(TVSHOW), TVShowItem::class.java)
+        tvShowItem = intent.getParcelableExtra(TVSHOW) ?: TVShowItem()
         tvShowVM.getTVShow(tvShowItem.id)?.observe(this, tvShowDetailObserver)
         tvShowVM.loader.observe(this, loadingObserver)
         tvShowVM.isFavorited(tvShowItem.id)?.observe(this, isFavoriteObserver)

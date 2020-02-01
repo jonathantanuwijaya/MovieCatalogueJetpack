@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_detail_movie.*
 import kotlinx.android.synthetic.main.app_bar.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -21,11 +20,11 @@ import yovi.putra.moviecatalogue.data.entity.MovieItem
 
 class DetailMovieActivity : BaseToolbarActivity() {
     companion object {
-        private const val MOVIE = "movie"
+        const val MOVIE = "movie"
 
         fun navigate(context: Context, movie: MovieItem) {
             val intent = Intent(context, DetailMovieActivity::class.java).apply {
-                putExtra(MOVIE, Gson().toJson(movie))
+                putExtra(MOVIE, movie)
             }
             context.startActivity(intent)
         }
@@ -42,7 +41,7 @@ class DetailMovieActivity : BaseToolbarActivity() {
     override fun setButtonBack(): Boolean = true
 
     override fun setupData(savedInstanceState: Bundle?) {
-        movieItem = Gson().fromJson(intent.getStringExtra(MOVIE), MovieItem::class.java)
+        movieItem = intent.getParcelableExtra(MOVIE) ?: MovieItem()
         movieVM.loader.observe(this, loadingObserver)
         movieVM.getMovie(movieItem.id)?.observe(this, movieDetailObserver)
         movieVM.isFavorited(movieItem.id)?.observe(this, isFavoritedObserver)

@@ -1,7 +1,9 @@
 package yovi.putra.moviecatalogue.ui.movie
 
+import android.content.Intent
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -28,7 +30,10 @@ class DetailMovieActivityTest {
     fun setUp() {
         IdlingRegistry.getInstance().register(EspressoIdlingResource.espressoIdlingResource)
         movie = DummyRepository.getMovieItem()
-        DetailMovieActivity.navigate(activity.activity, movie)
+        val intent = Intent().apply {
+            putExtra(DetailMovieActivity.MOVIE, movie)
+        }
+        activity.launchActivity(intent)
     }
 
     @After
@@ -44,5 +49,12 @@ class DetailMovieActivityTest {
         onView(withId(R.id.tv_overview)).check(matches(isDisplayed()))
         onView(withId(R.id.img_poster)).check(matches(isDisplayed()))
         onView(withId(R.id.img_banner)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun selectIconFavorite() {
+        onView(withId(R.id.bt_favorite)).check(matches(isDisplayed()))
+        onView(withId(R.id.bt_favorite)).perform(click())
+        onView(withId(R.id.bt_favorite)).perform(click())
     }
 }

@@ -11,12 +11,12 @@
     <string name="tvshow">TV Show</string>
     <string name="lbl_favorite">Favorite</string>
 
+    <string name="movie_favorite">Movie Favorite</string>
+    <string name="tvshow_favorite">TV Show Favorite</string>
+
     <string name="title">Title</string>
     <string name="description">Description</string>
 
     <string name="vote_count">(%s votes)</string>
 
-    <string name = "favorite_add_success"> Favorite successfully added </string>
-    <string name = "favorite_add_delete"> Favorite successfully replaced </string>
-    <string name = "favorite_empty"> The list of favorites is not yet available </string>
 </resources>
