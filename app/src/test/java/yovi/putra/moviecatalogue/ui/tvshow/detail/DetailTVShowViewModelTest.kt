@@ -4,8 +4,11 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import io.reactivex.Observable
+import kotlinx.coroutines.runBlocking
 import okhttp3.MediaType
 import okhttp3.ResponseBody
+import org.hamcrest.CoreMatchers
+import org.hamcrest.MatcherAssert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -21,6 +24,7 @@ import yovi.putra.moviecatalogue.data.entity.MovieDetailResponse
 import yovi.putra.moviecatalogue.data.entity.TVShowDetailResponse
 import yovi.putra.moviecatalogue.data.repository.TVShowRepository
 import yovi.putra.moviecatalogue.core.utils.json.JsonUtils
+import yovi.putra.moviecatalogue.data.entity.TVShowItem
 
 class DetailTVShowViewModelTest {
     @Rule
@@ -35,6 +39,7 @@ class DetailTVShowViewModelTest {
 
     private lateinit var viewModel: DetailTVShowViewModel
     private val jsonPath = "sample/tvshow_detail.json"
+    private val jsonPathItem = "sample/tvshow_item.json"
     private val tvShowId = 71912
 
     @Before
@@ -84,5 +89,35 @@ class DetailTVShowViewModelTest {
 
         loaderState.postValue(LoaderState.Hide)
         Mockito.verify(loaderObserver).onChanged(ArgumentMatchers.refEq(loaderState.value))
+    }
+
+    @Test
+    fun addFavorite() {
+        val repository = JsonUtils.getJsonObject(jsonPathItem, TVShowItem::class.java)
+        runBlocking {
+            tvShowRepository.addFavorite(repository)
+            Mockito.verify(tvShowRepository).addFavorite(repository)
+        }
+    }
+
+    @Test
+    fun getFavoriteStatus() {
+        val repository = JsonUtils.getJsonObject(jsonPathItem, TVShowItem::class.java)
+        val response = MutableLiveData<TVShowItem>()
+        response.value = repository
+        runBlocking {
+            tvShowRepository.getFavorite(repository.id)
+            Mockito.`when`(tvShowRepository.getFavoriteById(repository.id)).thenReturn(response)
+            MatcherAssert.assertThat(response.value, CoreMatchers.equalTo(repository) )
+        }
+    }
+
+    @Test
+    fun deleteFavorite() {
+        val repository = JsonUtils.getJsonObject(jsonPathItem, TVShowItem::class.java)
+        runBlocking {
+            tvShowRepository.deleteFavorite(repository.id)
+            Mockito.verify(tvShowRepository).deleteFavorite(repository.id)
+        }
     }
 }
